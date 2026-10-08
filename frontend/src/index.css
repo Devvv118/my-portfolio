@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* dark: applies inside any element carrying the .dark class (used by the project page) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-warm-display: "Sora", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-warm-serif: "Newsreader", Georgia, serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-cream: #faf5ec;
+  --color-cream-deep: #f1e9da;
+  --color-cream-line: #e6dcc8;
+  --color-warm-ink: #16171b;
+  --color-warm-ink-soft: #3a3c42;
+  --color-navy: #1e2b47;
+  --color-navy-deep: #10182b;
+  --color-navy-metal: #2c3e63;
+  --color-gold: #c19a5b;
+  --color-gold-deep: #a8823f;
+  --color-gold-soft: #e6d6b8;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-cream);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-warm-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-warm-ink);
+}
+
+/* thin, deliberate scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-cream-line); }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
