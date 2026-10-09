@@ -18,35 +18,6 @@ export const projects = [
   },
   {
     id: "02",
-    slug: "virtual-teaching-assistant",
-    title: "Virtual Teaching Assistant",
-    short: "Teaching Assistant",
-    category: "AI / RAG",
-    org: "IITM",
-    description: "RAG-based teaching assistant that answers questions for an IITM course.",
-    stack: ["Python", "FastAPI", "Typesense", "OpenAI"],
-    github: "https://github.com/Devvv118/virtual-teaching-assistant",
-    live: "https://virtual-teaching-assistant-pink.vercel.app/", // deployment URL (leave empty until it exists)
-    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
-    variant: "wave",
-    warmAccent: "gold",
-  },
-  {
-    id: "03",
-    slug: "stock-macro-view",
-    title: "Stock Macro View Platform",
-    short: "Stock Macro View",
-    category: "Full Stack",
-    description: "MERN dashboard for stocks, news sentiment, and macroeconomic trends.",
-    stack: ["MongoDB", "Express", "React", "Node.js", "AWS"],
-    github: "https://github.com/Devvv118/quick_stock_market",
-    live: "", // deployment URL (leave empty until it exists)
-    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
-    variant: "radii",
-    warmAccent: "ink",
-  },
-  {
-    id: "04",
     slug: "data-analyst-agent",
     title: "Data Analyst Agent",
     short: "Data Analyst Agent",
@@ -62,7 +33,22 @@ export const projects = [
     warmAccent: "navy",
   },
   {
-    id: "05",
+    id: "03",
+    slug: "virtual-teaching-assistant",
+    title: "Virtual Teaching Assistant",
+    short: "Teaching Assistant",
+    category: "AI / RAG",
+    org: "IITM",
+    description: "RAG-based teaching assistant that answers questions for an IITM course.",
+    stack: ["Python", "FastAPI", "Typesense", "OpenAI"],
+    github: "https://github.com/Devvv118/virtual-teaching-assistant",
+    live: "https://virtual-teaching-assistant-pink.vercel.app/", // deployment URL (leave empty until it exists)
+    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
+    variant: "wave",
+    warmAccent: "gold",
+  },
+  {
+    id: "04",
     slug: "vehicle-rental-system",
     title: "Vehicle Rental System",
     short: "Vehicle Rental",
@@ -77,7 +63,7 @@ export const projects = [
     warmAccent: "gold",
   },
   {
-    id: "06",
+    id: "05",
     slug: "my-portfolio",
     title: "Personal Portfolio Website",
     short: "Portfolio",
@@ -92,6 +78,20 @@ export const projects = [
     variant: "wave",
     warmAccent: "ink",
   },
+  {
+    id: "06",
+    slug: "stock-macro-view",
+    title: "Stock Macro View Platform",
+    short: "Stock Macro View",
+    category: "Full Stack",
+    description: "MERN dashboard for stocks, news sentiment, and macroeconomic trends.",
+    stack: ["MongoDB", "Express", "React", "Node.js", "AWS"],
+    github: "https://github.com/Devvv118/quick_stock_market",
+    live: "", // deployment URL (leave empty until it exists)
+    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
+    variant: "radii",
+    warmAccent: "ink",
+  },
 ];
 
 export const profile = {
@@ -100,7 +100,8 @@ export const profile = {
   tagline: "",
   bio: "I'm an undergrad student, with a diploma in data science. My work spans AI agents, machine learning, backend infrastructure, and data-driven platforms. I'm drawn to problems that require more than just a working solution; systems that are scalable, adaptive, and thoughtfully engineered.",
   location: "Bengaluru, IN",
-  email: "dev.socials@gmail.com",
+  email: "dev.socials181@gmail.com",
+  phone: "8971293837",
   socials: [
     { label: "GitHub", href: "https://github.com/Devvv118" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/dev-arun-a64598358/" },

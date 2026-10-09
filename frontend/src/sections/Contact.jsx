@@ -1,40 +1,108 @@
-import RevealText from "../components/RevealText";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import AmbientGlow from "../components/AmbientGlow";
 import { profile } from "../data/projects";
 
+const Arrow = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+    <path d="M3 11 11 3M5 3h6v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const rise = (i) => ({
+  initial: { opacity: 0, y: 18 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.3 },
+  transition: { duration: 0.6, delay: i * 0.08, ease: [0.19, 1, 0.22, 1] },
+});
+
+// Copies text to the clipboard, with a fallback for browsers/contexts without the Clipboard API.
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+}
+
 export default function Contact() {
+  const [copied, setCopied] = useState(null);
+  const direct = [
+    { label: "EMAIL", value: profile.email },
+    { label: "PHONE", value: profile.phone },
+  ];
+
+  const onCopy = async (d) => {
+    if (await copyText(d.value)) {
+      setCopied(d.label);
+      setTimeout(() => setCopied((c) => (c === d.label ? null : c)), 1800);
+    }
+  };
+
   return (
-    <section id="contact" className="relative overflow-hidden bg-navy px-6 py-24 md:px-12 md:py-32">
+    <section id="contact" className="relative overflow-hidden bg-navy px-6 py-14 md:px-12 md:py-16">
       <AmbientGlow variant="footer" />
 
-      <div className="relative z-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-        <div>
-          <span className="font-mono text-[11px] tracking-[0.2em] text-gold-soft">GET IN TOUCH</span>
-          <RevealText
-            as="h2"
-            text="Have something to say? Let's talk."
-            className="mt-5 font-warm-display text-4xl md:text-6xl leading-[1.05] tracking-tight text-cream max-w-2xl"
-          />
-        </div>
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <motion.span {...rise(0)} className="font-mono text-[11px] tracking-[0.2em] text-gold-soft">CONTACT</motion.span>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="flex h-32 w-32 shrink-0 items-center justify-center rounded-full border border-gold-soft font-mono text-[11px] tracking-[0.15em] text-cream shadow-[0_25px_50px_-15px_rgba(0,0,0,0.55)] transition-colors hover:bg-gold hover:border-gold hover:text-navy"
-        >
-          SAY HELLO
-        </a>
-      </div>
-
-      <div className="relative z-10 mt-20 flex flex-col gap-4 border-t border-white/10 pt-8 font-mono text-[11px] tracking-[0.15em] text-white/50 md:flex-row md:items-center md:justify-between">
-        <span>© {new Date().getFullYear()} {profile.name}</span>
-        <div className="flex gap-6">
-          {profile.socials.map((s) => (
-            <a key={s.label} href={s.href} className="hover:text-gold-soft transition-colors">
-              {s.label.toUpperCase()}
-            </a>
+        <div className="mt-6 border-t border-white/15">
+          {direct.map((d, i) => (
+            <motion.button
+              key={d.label}
+              type="button"
+              {...rise(i + 1)}
+              onClick={() => onCopy(d)}
+              aria-label={`Copy ${d.label.toLowerCase()}: ${d.value}`}
+              className="group flex w-full cursor-pointer flex-col text-left gap-2 border-b border-white/15 py-4 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-8 md:py-5"
+            >
+              <span className="font-mono text-[11px] tracking-[0.2em] text-white/50">{d.label}</span>
+              <span className="flex items-center gap-3 break-all font-warm-display text-lg font-medium text-cream transition-colors group-hover:text-gold md:text-xl">
+                {d.value}
+                <span className="font-mono text-[10px] font-normal tracking-[0.2em] text-gold-soft" aria-live="polite">
+                  {copied === d.label ? "COPIED ✓" : "CLICK TO COPY"}
+                </span>
+              </span>
+            </motion.button>
           ))}
         </div>
-        <span>{profile.location.toUpperCase()}</span>
+
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {profile.socials.map((s, i) => (
+            <motion.a
+              key={s.label}
+              {...rise(i + 3)}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3.5 font-mono text-[12px] tracking-[0.2em] text-cream backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold hover:text-navy"
+            >
+              {s.label.toUpperCase()}
+              <Arrow />
+            </motion.a>
+          ))}
+        </div>
+
+        <motion.div {...rise(6)} className="mt-10 flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-white/50">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" aria-hidden="true">
+            <path d="M6 13s5-4.2 5-7.6A5 5 0 0 0 1 5.4C1 8.8 6 13 6 13Z" stroke="currentColor" strokeWidth="1.2" />
+            <circle cx="6" cy="5.4" r="1.7" stroke="currentColor" strokeWidth="1.2" />
+          </svg>
+          {profile.location.toUpperCase()}
+        </motion.div>
       </div>
     </section>
   );

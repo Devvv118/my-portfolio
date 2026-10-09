@@ -6,6 +6,7 @@ import { projects, profile } from "../data/projects";
 
 const links = [
   { label: "Home", href: "#top" },
+  { label: "Projects", href: "#work" },
   { label: "Contact", href: "#contact" },
 ];
 
