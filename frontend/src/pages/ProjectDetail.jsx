@@ -61,12 +61,12 @@ export default function ProjectDetail() {
         </div>
       </Section>
 
-      <Section label="02 — LEARNINGS" title="What I learnt">
-        <div className={flush}><Readme source={w.learnt} /></div>
+      <Section label="02 — RESPONSIBILITIES" title="Responsibilities">
+        <div className={flush}><Readme source={w.responsibilities} /></div>
       </Section>
 
-      <Section label="03 — CHALLENGES" title="Challenges I faced">
-        <div className={flush}><Readme source={w.challenges} /></div>
+      <Section label="03 — LEARNINGS" title="Learnings">
+        <div className={flush}><Readme source={w.learnings} /></div>
       </Section>
 
       <Section label="04 — DEMO" title="See it in action">

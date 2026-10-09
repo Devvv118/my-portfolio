@@ -57,7 +57,7 @@ export default function Hero() {
             →
           </a>
           <a href="#contact" className="font-body text-base text-warm-ink-soft dark:text-cream/70 hover:text-navy dark:hover:text-gold transition-colors">
-            Have something to say? Let's talk
+            Get in touch
           </a>
         </div>
 

@@ -54,6 +54,11 @@ export default function Work() {
               <h3 className="font-warm-display text-xl md:text-2xl font-medium text-warm-ink dark:text-cream transition-colors group-hover:text-navy dark:group-hover:text-gold">
                 <Link to={`/projects/${p.slug}`}>{p.title}</Link>
               </h3>
+              {(p.org || p.kind) && (
+                <div className="mt-1.5 font-mono text-[10px] tracking-[0.2em] text-gold-deep dark:text-gold">
+                  {[p.org, p.kind].filter(Boolean).join(" · ").toUpperCase()}
+                </div>
+              )}
               <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-warm-ink-soft dark:text-cream/70">
                 {p.description}
               </p>
