@@ -11,14 +11,17 @@ export function GithubIcon({ size = 14 }) {
 }
 
 // Link pill. Hover only changes colour — nothing moves. No href = greyed-out "UNAVAILABLE" state.
-export function LinkButton({ href, icon, primary = false, children }) {
+export function LinkButton({ href, onClick, icon, primary = false, children }) {
   const base = "inline-flex items-center gap-2.5 rounded-full border px-5 py-2.5 font-mono text-[11px] tracking-[0.08em] transition-colors";
-  if (!href) {
+  if (!href && !onClick) {
     return <span className={`${base} cursor-not-allowed border-cream-line text-warm-ink-soft/40 dark:border-white/10 dark:text-cream/30`}>{icon}{children} · UNAVAILABLE</span>;
   }
   const tone = primary
     ? "border-navy bg-navy text-cream hover:border-navy-metal hover:bg-navy-metal dark:border-gold dark:bg-gold dark:text-warm-ink dark:hover:border-gold-soft dark:hover:bg-gold-soft"
     : "border-warm-ink-soft/40 text-warm-ink hover:border-navy hover:text-navy dark:border-white/20 dark:text-cream/80 dark:hover:border-gold dark:hover:text-gold";
+  if (onClick) {
+    return <button type="button" onClick={onClick} className={`${base} ${tone}`}>{icon}{children}</button>;
+  }
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className={`${base} ${tone}`}>
       {icon}{children}

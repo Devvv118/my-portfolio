@@ -53,6 +53,7 @@ export const projects = [
     title: "Vehicle Rental System",
     short: "Vehicle Rental",
     category: "Full Stack",
+    kind: "Personal Project",
     description:
       "Full-stack car rental manager handling reservations, returns, fees, payments, and maintenance.",
     stack: ["FastAPI", "React", "TypeScript", "MySQL", "SQLAlchemy"],
@@ -67,13 +68,15 @@ export const projects = [
     slug: "my-portfolio",
     title: "Personal Portfolio Website",
     short: "Portfolio",
-    category: "Full Stack",
+    category: "Frontend",
     kind: "Personal Project",
     description:
-      "This site: a React and Tailwind portfolio with light and dark themes and markdown-driven project pages, backed by a small Express API.",
+      "This site: a React and Tailwind portfolio with light and dark themes and markdown driven project pages.",
     stack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Express", "TypeScript"],
     github: "https://github.com/Devvv118/my-portfolio",
-    live: "https://my-portfolio-omega-livid-98.vercel.app/", // deployment URL (leave empty until it exists)
+    live: "", // none: this site is the live demo
+    liveReload: true, // LIVE DEMO button reloads the current page instead of opening a link
+    hideDemo: true, // no demo video section
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
     variant: "wave",
     warmAccent: "ink",
@@ -84,6 +87,7 @@ export const projects = [
     title: "Stock Macro View Platform",
     short: "Stock Macro View",
     category: "Full Stack",
+    kind: "Personal Project",
     description: "MERN dashboard for stocks, news sentiment, and macroeconomic trends.",
     stack: ["MongoDB", "Express", "React", "Node.js", "AWS"],
     github: "https://github.com/Devvv118/quick_stock_market",

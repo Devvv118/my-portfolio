@@ -15,14 +15,14 @@ React app (Vite + React Router)
  ┌────┴─────┐
  ▼          ▼
 Home page   Project pages
-(hero, featured tiles,   (overview, responsibilities,
- project list, contact)   learnings, demo, README)
+(hero, featured tiles,   (overview, details,
+ project list, contact)   demo, README)
 ```
 
 ## Key Features
 
 - Content-driven: adding a project means adding data and a markdown file, not new components
-- Each project page shows an overview, responsibilities, learnings, a demo and a README
+- Each project page shows an overview, a README and, where relevant, responsibilities, learning and a demo
 - Light and dark themes
 - Generative visuals for each project instead of stock photos
 - Smooth scroll-triggered animation that respects reduced-motion settings

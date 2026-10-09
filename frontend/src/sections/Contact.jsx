@@ -56,31 +56,31 @@ export default function Contact() {
     <section id="contact" className="relative overflow-hidden bg-navy px-6 py-14 md:px-12 md:py-16">
       <AmbientGlow variant="footer" />
 
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <motion.span {...rise(0)} className="font-mono text-[11px] tracking-[0.2em] text-gold-soft">CONTACT</motion.span>
+      <div className="relative z-10">
+        <span className="mb-8 block font-mono text-[11px] tracking-[0.2em] text-gold">CONTACT</span>
 
-        <div className="mt-6 border-t border-white/15">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {direct.map((d, i) => (
             <motion.button
               key={d.label}
               type="button"
-              {...rise(i + 1)}
+              {...rise(i)}
               onClick={() => onCopy(d)}
               aria-label={`Copy ${d.label.toLowerCase()}: ${d.value}`}
-              className="group flex w-full cursor-pointer flex-col text-left gap-2 border-b border-white/15 py-4 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-8 md:py-5"
+              className="group flex w-full cursor-pointer flex-col gap-2 rounded-2xl border border-white/15 bg-white/[0.04] px-6 py-5 text-left backdrop-blur-sm transition-colors hover:border-gold"
             >
-              <span className="font-mono text-[11px] tracking-[0.2em] text-white/50">{d.label}</span>
-              <span className="flex items-center gap-3 break-all font-warm-display text-lg font-medium text-cream transition-colors group-hover:text-gold md:text-xl">
+              <span className="flex items-center justify-between font-mono text-[10px] tracking-[0.2em] text-white/50">
+                {d.label}
+                <span className="text-gold-soft" aria-live="polite">{copied === d.label ? "COPIED ✓" : "CLICK TO COPY"}</span>
+              </span>
+              <span className="break-all font-warm-display text-lg font-medium text-cream transition-colors group-hover:text-gold md:text-xl">
                 {d.value}
-                <span className="font-mono text-[10px] font-normal tracking-[0.2em] text-gold-soft" aria-live="polite">
-                  {copied === d.label ? "COPIED ✓" : "CLICK TO COPY"}
-                </span>
               </span>
             </motion.button>
           ))}
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {profile.socials.map((s, i) => (
             <motion.a
               key={s.label}

@@ -40,6 +40,38 @@ export default function ProjectDetail() {
 
   const w = getWriteup(slug);
 
+  // Sections are numbered automatically; a section is skipped when its content is null/empty.
+  const sections = [
+    {
+      key: "about", label: "OVERVIEW", title: "About the project", show: !!w.about,
+      body: (
+        <div className={`${flush} [&_p]:text-lg [&_p]:leading-relaxed md:[&_p]:text-xl`}>
+          <Readme source={w.about} />
+        </div>
+      ),
+    },
+    {
+      key: "responsibilities", label: "RESPONSIBILITIES", title: "Responsibilities", show: !!w.responsibilities,
+      body: <div className={flush}><Readme source={w.responsibilities} /></div>,
+    },
+    {
+      key: "learning", label: "LEARNING", title: "Learning", show: !!w.learning,
+      body: <div className={flush}><Readme source={w.learning} /></div>,
+    },
+    {
+      key: "demo", label: "DEMO", title: "See it in action", show: !p.hideDemo,
+      body: <Demo url={p.demo} title={p.title} />,
+    },
+    {
+      key: "readme", label: "README", title: "README.md", show: true,
+      body: (
+        <div className="mt-6 rounded-xl border border-cream-line bg-white/50 p-6 dark:border-white/10 dark:bg-warm-ink md:p-10 [&>:first-child]:mt-0">
+          <Readme source={getReadme(slug)} />
+        </div>
+      ),
+    },
+  ].filter((x) => x.show);
+
   return (
     <main className={`${dark ? "dark" : ""} min-h-screen bg-cream pb-28 text-warm-ink dark:bg-navy-deep dark:text-cream`}>
       <TopBar dark={dark} onToggle={toggleTheme} />
@@ -51,33 +83,19 @@ export default function ProjectDetail() {
         <Tags items={p.stack} className="mt-8" />
         <div className="mt-8 flex flex-wrap gap-3">
           <LinkButton href={p.github} icon={<GithubIcon />} primary>GITHUB</LinkButton>
-          <LinkButton href={p.live} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
+          {p.liveReload ? (
+            <LinkButton onClick={() => window.location.reload()} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
+          ) : (
+            <LinkButton href={p.live} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
+          )}
         </div>
       </header>
 
-      <Section label="01 — OVERVIEW" title="About the project">
-        <div className={`${flush} [&_p]:text-lg [&_p]:leading-relaxed md:[&_p]:text-xl`}>
-          <Readme source={w.about} />
-        </div>
-      </Section>
-
-      <Section label="02 — RESPONSIBILITIES" title="Responsibilities">
-        <div className={flush}><Readme source={w.responsibilities} /></div>
-      </Section>
-
-      <Section label="03 — LEARNINGS" title="Learnings">
-        <div className={flush}><Readme source={w.learnings} /></div>
-      </Section>
-
-      <Section label="04 — DEMO" title="See it in action">
-        <Demo url={p.demo} title={p.title} />
-      </Section>
-
-      <Section label="05 — README" title="README.md">
-        <div className="mt-6 rounded-xl border border-cream-line bg-white/50 p-6 dark:border-white/10 dark:bg-warm-ink md:p-10 [&>:first-child]:mt-0">
-          <Readme source={getReadme(slug)} />
-        </div>
-      </Section>
+      {sections.map((sec, i) => (
+        <Section key={sec.key} label={`${String(i + 1).padStart(2, "0")} — ${sec.label}`} title={sec.title}>
+          {sec.body}
+        </Section>
+      ))}
     </main>
   );
 }
