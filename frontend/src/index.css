@@ -18,7 +18,7 @@
   --color-navy-deep: #10182b;
   --color-navy-metal: #2c3e63;
   --color-gold: #c19a5b;
-  --color-gold-deep: #a8823f;
+  --color-gold-deep: #7a5a1e; /* darker so gold text is readable on the cream (light) background */
   --color-gold-soft: #e6d6b8;
 }
 

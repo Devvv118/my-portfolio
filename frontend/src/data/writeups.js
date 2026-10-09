@@ -3,7 +3,7 @@
 //
 // Fields: about (Overview), responsibilities (Responsibilities), learnings (learnings)
 // Slugs: io-workload-classifier, virtual-teaching-assistant, stock-macro-view,
-//        data-analyst-agent, vehicle-rental-system
+//        data-analyst-agent, vehicle-rental-system, my-portfolio
 const placeholder = {
   about: `*Project write-up coming soon.*
 
@@ -72,6 +72,20 @@ A database-backed system for listing vehicles, handling bookings, and tracking r
 - Implementing CRUD logic for various components.`,
     learnings: `- Modelling real-world constraints such as overlapping bookings.
 - Keeping data consistent across related tables.`,
+  },
+
+  "my-portfolio": {
+    about: `*Personal Project.*  
+  **Solo Project**
+
+The portfolio you are on right now: a single-page site with a dedicated page for every project, light and dark themes, and project write-ups and READMEs that are plain markdown files.`,
+    responsibilities: `- Designing the visual identity: a warm cream, navy and gold palette with generative visuals instead of stock photos.
+- Building the React front end: the home page sections, the project list and the project detail pages.
+- Setting up the markdown pipeline so each project's write-up and README renders from a file.
+- Setting up a small Express and TypeScript backend and deploying the site on Vercel.`,
+    learnings: `- Designing a content-driven site where adding a project means editing data, not components.
+- Building a theme system with Tailwind that works in both light and dark modes.
+- Keeping animation smooth and tasteful with Framer Motion, including respecting reduced-motion preferences.`,
   },
 };
 

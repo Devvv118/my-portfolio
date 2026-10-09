@@ -76,6 +76,22 @@ export const projects = [
     variant: "bars",
     warmAccent: "gold",
   },
+  {
+    id: "06",
+    slug: "my-portfolio",
+    title: "Personal Portfolio Website",
+    short: "Portfolio",
+    category: "Full Stack",
+    kind: "Personal Project",
+    description:
+      "This site: a React and Tailwind portfolio with light and dark themes and markdown-driven project pages, backed by a small Express API.",
+    stack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Express", "TypeScript"],
+    github: "https://github.com/Devvv118/my-portfolio",
+    live: "https://my-portfolio-omega-livid-98.vercel.app/", // deployment URL (leave empty until it exists)
+    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
+    variant: "wave",
+    warmAccent: "ink",
+  },
 ];
 
 export const profile = {

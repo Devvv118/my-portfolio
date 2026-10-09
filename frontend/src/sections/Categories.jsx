@@ -4,7 +4,9 @@ import WarmVisual from "../components/WarmVisual";
 import { projects } from "../data/projects";
 
 const MotionLink = motion.create(Link);
-const featured = projects.slice(0, 3);
+// Pick the three featured tiles by slug, so reordering or adding projects never changes them.
+const FEATURED_SLUGS = ["io-workload-classifier", "virtual-teaching-assistant", "data-analyst-agent"];
+const featured = FEATURED_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter(Boolean);
 
 export default function Categories() {
   return (

@@ -1,19 +1,39 @@
 # Stock Macro View Platform
 
-A MERN-stack platform that brings company financials, stock data, news sentiment, and macroeconomic indicators together in one place, deployed on AWS.
+A MERN-stack platform that brings company financials, stock data, news sentiment and macroeconomic indicators together in one place, so market moves can be read in context.
 
-## What it does
+## How It Works
 
-- Node.js pipelines aggregate company financials, stock data, news sentiment, and macroeconomic indicators from external APIs
-- Retries, validation, and error handling keep data ingestion reliable
-- Data is structured as JSONL for MongoDB bulk loading
-- A React dashboard lets you explore financial and economic trends
+```
+External APIs
+(financials · stock prices · news · macro indicators)
+      │
+      ▼
+Node.js ingestion pipelines
+(retries · validation · error handling)
+      │
+      ▼
+JSONL files → MongoDB bulk load
+      │
+      ▼
+Express API
+      │
+      ▼
+React dashboard
+```
 
-## Tech stack
+## Key Features
+
+- Pipelines aggregate company financials, stock data, news sentiment and macroeconomic indicators
+- Retries, validation and error handling keep ingestion reliable
+- Data is structured as JSONL for fast MongoDB bulk loading
+- A React dashboard to explore financial and economic trends
+
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
 | Frontend | React |
-| Backend / pipelines | Node.js, Express |
+| Backend and Pipelines | Node.js, Express |
 | Database | MongoDB Atlas |
 | Hosting | AWS S3 + CloudFront (frontend), EC2 (backend) |
