@@ -13,7 +13,7 @@ export default function HeroCurve({ className = "" }) {
     >
       <defs>
         <linearGradient id="heroCurveFill" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#e6d6b8" stopOpacity="0.9" />
+          <stop offset="0%" stopColor="#e4d2b6" stopOpacity="0.9" />
           <stop offset="100%" stopColor="#c19a5b" stopOpacity="0.35" />
         </linearGradient>
       </defs>

@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 // hard dark panel.
 
 const tones = {
-  navy: { bg: "#1e2b47", line: "#e6d6b8", wash: "rgba(30,43,71,0.85)" },
-  gold: { bg: "#8a6b34", line: "#faf5ec", wash: "rgba(138,107,52,0.85)" }, // muted bronze
-  ink: { bg: "#2c3e63", line: "#e6d6b8", wash: "rgba(44,62,99,0.85)" }, // navy-metal
+  navy: { bg: "#293750", line: "#e4d2b6", wash: "rgba(41,55,80,0.85)" },
+  gold: { bg: "#8d6739", line: "#f7f5f0", wash: "rgba(141,103,57,0.85)" }, // muted bronze
+  ink: { bg: "#3b4b68", line: "#e4d2b6", wash: "rgba(59,75,104,0.85)" }, // navy-metal
 };
 
 function Bars({ line }) {

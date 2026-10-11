@@ -8,7 +8,7 @@ export default function AmbientGlow({ variant = "hero", className = "" }) {
       <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
         <div
           className="absolute -top-24 left-1/4 h-[420px] w-[420px] rounded-full opacity-40 blur-[110px]"
-          style={{ background: "radial-gradient(circle, #c19a5b, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #b6864e, transparent 70%)" }}
         />
         <div
           className="absolute -bottom-32 right-1/5 h-[380px] w-[380px] rounded-full opacity-30 blur-[100px]"
@@ -30,7 +30,7 @@ export default function AmbientGlow({ variant = "hero", className = "" }) {
       />
       <div
         className="absolute bottom-0 right-1/4 h-[300px] w-[300px] rounded-full opacity-[0.18] blur-[90px]"
-        style={{ background: "radial-gradient(circle, #c19a5b, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, #b6864e, transparent 70%)" }}
       />
     </div>
   );
