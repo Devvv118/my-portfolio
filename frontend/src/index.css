@@ -9,18 +9,17 @@
   --font-warm-serif: "Newsreader", Georgia, serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  /* A quiet pearl base with blue structure and restrained golden warmth. */
-  --color-cream: #f8fafc;
-  --color-cream-deep: #eef3f8;
-  --color-cream-line: #d7e1eb;
-  --color-warm-ink: #182536;
-  --color-warm-ink-soft: #526276;
-  --color-navy: #304a6a;
-  --color-navy-deep: #111d31;
-  --color-navy-metal: #496789;
-  --color-gold: #c39a5f;
-  --color-gold-deep: #80602f; /* darker so gold text is readable on the pearl background */
-  --color-gold-soft: #ead9bc;
+  --color-cream: #f7f5f0;
+  --color-cream-deep: #ebe9e2;
+  --color-cream-line: #d9d8d1;
+  --color-warm-ink: #18212b;
+  --color-warm-ink-soft: #4b5561;
+  --color-navy: #293750;
+  --color-navy-deep: #121b2b;
+  --color-navy-metal: #3b4b68;
+  --color-gold: #b6864e;
+  --color-gold-deep: #76562d; /* darker so gold text is readable on the cream (light) background */
+  --color-gold-soft: #e4d2b6;
 }
 
 html {
