@@ -19,8 +19,8 @@ export const projects = [
   {
     id: "02",
     slug: "data-analyst-agent",
-    title: "AI Agent Orchestration Platform",
-    short: "AI Agent Orchestration Platform",
+    title: "Data Analyst Agent",
+    short: "Data Analyst Agent",
     category: "AI Agents",
     org: "IITM",
     description:
