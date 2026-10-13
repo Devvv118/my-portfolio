@@ -2,26 +2,6 @@
 
 A MERN-stack platform that brings company financials, stock data, news sentiment and macroeconomic indicators together in one place, so market moves can be read in context.
 
-## How It Works
-
-```
-External APIs
-(financials · stock prices · news · macro indicators)
-      │
-      ▼
-Node.js ingestion pipelines
-(retries · validation · error handling)
-      │
-      ▼
-JSONL files → MongoDB bulk load
-      │
-      ▼
-Express API
-      │
-      ▼
-React dashboard
-```
-
 ## Key Features
 
 - Pipelines aggregate company financials, stock data, news sentiment and macroeconomic indicators

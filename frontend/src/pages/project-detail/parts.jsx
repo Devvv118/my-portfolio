@@ -44,7 +44,7 @@ export function Tags({ items, className = "" }) {
 // Back link, labelled theme toggle and logo.
 export function TopBar({ dark, onToggle }) {
   return (
-    <div className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-8 md:px-12">
+    <div className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-4 md:px-12">
       <a href="/#work" className="font-mono text-[11px] tracking-[0.15em] text-warm-ink-soft transition-colors hover:text-navy dark:text-cream/70 dark:hover:text-gold">← ALL PROJECTS</a>
       <div className="flex items-center gap-4">
         <ThemeToggle dark={dark} onToggle={onToggle} />

@@ -9,15 +9,41 @@ import { useTheme } from "../hooks/useTheme";
 import { GithubIcon, LinkButton, LiveIcon, Tags, TopBar } from "./project-detail/parts";
 
 // First child of a content block sits flush under its heading.
-const flush = "mt-5 [&>:first-child]:mt-0";
+const flush = "mt-3 [&>:first-child]:mt-0";
 
 function Section({ label, title, children }) {
   return (
-    <section className="mx-auto mt-16 max-w-3xl border-t border-cream-line px-6 pt-10 dark:border-white/10">
+    <section className="mx-auto mt-8 max-w-3xl border-t border-cream-line px-6 pt-5 dark:border-white/10">
       <div className="font-mono text-[11px] tracking-[0.2em] text-gold-deep dark:text-gold">{label}</div>
-      <h2 className="mt-3 font-warm-display text-2xl font-medium text-warm-ink md:text-3xl dark:text-cream">{title}</h2>
+      <h2 className="mt-2 font-warm-display text-xl font-medium text-warm-ink md:text-2xl dark:text-cream">{title}</h2>
       {children}
     </section>
+  );
+}
+
+// Architecture diagrams live in /public/architecture as <slug>-light.png and <slug>-dark.png.
+// Only the slugs listed here have one; the dark variant is optional (the light one is reused).
+const diagrams = {
+  "io-workload-classifier": { alt: "Telemetry-driven intelligence and control architecture", darkVariant: false },
+  "data-analyst-agent": { alt: "File-aware analysis and code execution flow", darkVariant: true },
+  "virtual-teaching-assistant": { alt: "Course question answering flow", darkVariant: true },
+  "stock-macro-view": { alt: "Data ingestion and storage architecture", darkVariant: true },
+};
+
+function Architecture({ slug }) {
+  const d = diagrams[slug];
+  const base = `/architecture/${slug}`;
+  return (
+    <div className={`mt-4 overflow-hidden rounded-xl border border-cream-line bg-white dark:border-white/10 ${d.darkVariant ? "dark:bg-[#171717]" : ""}`}>
+      <img
+        src={`${base}-light.png`}
+        alt={d.alt}
+        className={`mx-auto block max-h-[620px] w-auto max-w-full ${d.darkVariant ? "dark:hidden" : ""} `}
+      />
+      {d.darkVariant && (
+        <img src={`${base}-dark.png`} alt={d.alt} className="mx-auto hidden max-h-[620px] w-auto max-w-full dark:block" />
+      )}
+    </div>
   );
 }
 
@@ -63,9 +89,13 @@ export default function ProjectDetail() {
       body: <Demo url={p.demo} title={p.title} />,
     },
     {
+      key: "architecture", label: "ARCHITECTURE", title: "How it fits together", show: !!diagrams[slug],
+      body: <Architecture slug={slug} />,
+    },
+    {
       key: "readme", label: "README", title: "README.md", show: true,
       body: (
-        <div className="mt-6 rounded-xl border border-cream-line bg-white/50 p-6 dark:border-white/10 dark:bg-warm-ink md:p-10 [&>:first-child]:mt-0">
+        <div className="mt-4 rounded-xl border border-cream-line bg-white/50 p-5 dark:border-white/10 dark:bg-warm-ink md:p-7 [&>:first-child]:mt-0">
           <Readme source={getReadme(slug)} />
         </div>
       ),
@@ -73,15 +103,15 @@ export default function ProjectDetail() {
   ].filter((x) => x.show);
 
   return (
-    <main className={`${dark ? "dark" : ""} min-h-screen bg-cream pb-28 text-warm-ink dark:bg-navy-deep dark:text-cream`}>
+    <main className={`${dark ? "dark" : ""} min-h-screen bg-cream pb-14 text-warm-ink dark:bg-navy-deep dark:text-cream`}>
       <TopBar dark={dark} onToggle={toggleTheme} />
 
-      <header className="mx-auto max-w-3xl px-6 pt-16 md:pt-24">
+      <header className="mx-auto max-w-3xl px-6 pt-8 md:pt-12">
         <div className="font-mono text-[11px] tracking-[0.2em] text-gold-deep dark:text-gold">{p.id} — {p.category.toUpperCase()}</div>
-        <h1 className="mt-5 font-warm-display text-4xl tracking-tight text-warm-ink md:text-6xl dark:text-cream">{p.title}</h1>
-        <p className="mt-6 max-w-xl font-warm-serif text-xl font-light text-warm-ink-soft md:text-2xl dark:text-cream/70">{p.description}</p>
-        <Tags items={p.stack} className="mt-8" />
-        <div className="mt-8 flex flex-wrap gap-3">
+        <h1 className="mt-3 font-warm-display text-3xl tracking-tight text-warm-ink md:text-5xl dark:text-cream">{p.title}</h1>
+        <p className="mt-3 max-w-xl font-warm-serif text-lg font-light text-warm-ink-soft md:text-xl dark:text-cream/70">{p.description}</p>
+        <Tags items={p.stack} className="mt-4" />
+        <div className="mt-4 flex flex-wrap gap-3">
           <LinkButton href={p.github} icon={<GithubIcon />} primary>GITHUB</LinkButton>
           {p.liveReload ? (
             <LinkButton onClick={() => window.location.reload()} icon={<LiveIcon />}>LIVE DEMO</LinkButton>

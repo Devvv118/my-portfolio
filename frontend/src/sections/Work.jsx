@@ -14,14 +14,14 @@ function GithubIcon() {
 
 export default function Work() {
   return (
-    <section id="work" className="relative bg-cream dark:bg-navy-deep px-6 py-24 md:px-12 md:py-32">
-      <div className="mb-14 flex items-end justify-between">
+    <section id="work" className="relative bg-cream dark:bg-navy-deep px-6 py-12 md:px-20 md:py-16 lg:px-32">
+      <div className="mb-7 flex items-end justify-between">
         <div>
           <span className="font-mono text-[11px] tracking-[0.2em] text-gold-deep dark:text-gold">SELECTED WORK</span>
           <RevealText
             as="h2"
             text="Projects worth a closer look."
-            className="mt-4 font-warm-display text-4xl md:text-6xl tracking-tight text-warm-ink dark:text-cream"
+            className="mt-3 font-warm-display text-3xl md:text-5xl tracking-tight text-warm-ink dark:text-cream"
           />
         </div>
         <span className="hidden md:block font-mono text-[11px] tracking-[0.15em] text-warm-ink-soft dark:text-cream/70">
@@ -37,18 +37,17 @@ export default function Work() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.6, delay: i * 0.04, ease: [0.19, 1, 0.22, 1] }}
-            className="group grid grid-cols-1 items-center gap-6 py-8 md:grid-cols-12 md:gap-6 md:py-10"
+            className="group grid grid-cols-1 items-center gap-3 py-4 md:grid-cols-12 md:gap-6 md:py-5"
           >
             <Link to={`/projects/${p.slug}`} className="block md:col-span-2" aria-label={`Open ${p.title}`}>
               <WarmVisual
-                variant={p.variant}
-                tone={p.warmAccent}
-                className="aspect-square w-full max-w-[140px] rounded-xl dark:ring-1 dark:ring-white/10 shadow-[0_18px_35px_-18px_rgba(16,24,43,0.4)]"
+                project={p}
+                className="aspect-[4/3] w-full max-w-[120px] rounded-lg dark:ring-1 dark:ring-white/10 shadow-[0_14px_28px_-16px_rgba(26,40,72,0.5)]"
               />
             </Link>
 
             <div className="md:col-span-6">
-              <div className="font-mono text-[10px] tracking-[0.2em] text-warm-ink-soft dark:text-cream/60 mb-2">
+              <div className="font-mono text-[10px] tracking-[0.2em] text-warm-ink-soft dark:text-cream/60 mb-1.5">
                 {p.id} — {p.category.toUpperCase()}
               </div>
               <h3 className="font-warm-display text-xl md:text-2xl font-medium text-warm-ink dark:text-cream transition-colors group-hover:text-navy dark:group-hover:text-gold">
@@ -59,7 +58,7 @@ export default function Work() {
                   {[p.org, p.kind].filter(Boolean).join(" · ").toUpperCase()}
                 </div>
               )}
-              <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-warm-ink-soft dark:text-cream/70">
+              <p className="mt-1.5 max-w-md text-sm font-light leading-relaxed text-warm-ink-soft dark:text-cream/70">
                 {p.description}
               </p>
             </div>

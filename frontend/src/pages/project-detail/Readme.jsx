@@ -16,16 +16,16 @@ const heading = (Tag, cls) => ({ children }) => (
 );
 
 const components = {
-  h1: heading("h2", "mt-12 mb-4 text-2xl"),
-  h2: heading("h2", "mt-12 mb-4 text-2xl"),
-  h3: heading("h3", "mt-8 mb-3 text-lg"),
+  h1: heading("h2", "mt-7 mb-3 text-xl"),
+  h2: heading("h2", "mt-7 mb-3 text-xl"),
+  h3: heading("h3", "mt-5 mb-2 text-lg"),
   h4: heading("h4", "mt-6 mb-2 text-base"),
   p: ({ children }) => <p className={`my-4 leading-relaxed ${body}`}>{children}</p>,
   ul: ({ children }) => <ul className="my-4 list-disc space-y-1.5 pl-6 marker:text-gold">{children}</ul>,
   ol: ({ children }) => <ol className="my-4 list-decimal space-y-1.5 pl-6 marker:text-gold">{children}</ol>,
   li: ({ children }) => <li className={`leading-relaxed ${body}`}>{children}</li>,
   strong: ({ children }) => <strong className="font-medium text-warm-ink dark:text-cream">{children}</strong>,
-  hr: () => <hr className={`my-10 ${rule}`} />,
+  hr: () => <hr className={`my-6 ${rule}`} />,
   blockquote: ({ children }) => <blockquote className={`my-5 border-l-2 border-gold pl-4 ${body}`}>{children}</blockquote>,
   a: ({ href = "", children }) =>
     /^(https?:|#)/.test(href) ? (

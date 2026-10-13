@@ -10,8 +10,8 @@ const featured = FEATURED_SLUGS.map((s) => projects.find((p) => p.slug === s)).f
 
 export default function Categories() {
   return (
-    <section className="relative bg-cream dark:bg-navy-deep px-6 pb-20 md:px-12 md:pb-28">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <section className="relative bg-cream dark:bg-navy-deep px-6 pb-10 md:px-20 md:pb-14 lg:px-32">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
         {featured.map((p, i) => {
           return (
             <MotionLink
@@ -21,13 +21,12 @@ export default function Categories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.19, 1, 0.22, 1] }}
-              className="group relative block overflow-hidden rounded-2xl dark:ring-1 dark:ring-white/10 shadow-[0_25px_50px_-20px_rgba(16,24,43,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-15px_rgba(16,24,43,0.45)]"
+              className="group relative block overflow-hidden rounded-2xl dark:ring-1 dark:ring-white/10 shadow-[0_25px_50px_-20px_rgba(26,40,72,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-15px_rgba(26,40,72,0.45)]"
             >
               <WarmVisual
-                variant={p.variant}
-                tone={p.warmAccent}
+                project={p}
                 label={p.short}
-                className="aspect-[4/3] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                className="aspect-[16/9] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute right-4 top-4 rounded-full bg-cream/90 dark:bg-navy-deep/85 px-2.5 py-1 font-mono text-[10px] tracking-wide text-warm-ink dark:text-cream">
                 {p.category.toUpperCase()}

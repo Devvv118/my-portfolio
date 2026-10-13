@@ -2,37 +2,6 @@
 
 An LLM-powered agent that takes a plain-language data analysis question, along with any data files, breaks it into smaller tasks, writes and runs Python for each one, debugs its own failures, and returns the answers as JSON.
 
-## How It Works
-
-```
-Question + data files (CSV, Excel, JSON, text, HTML, images)
-      │
-      ▼
-Summarise each file
-      │
-      ▼
-Task Breakdown (ordered, self-contained tasks)
-      │
-      ▼
-For each task:
-  Rewrite task using the real file structure
-        │
-        ▼
-  Generate Python code
-        │
-        ▼
-  Execute in an isolated environment
-        │
-        ▼
-  On failure: explain the error, regenerate (limited retries)
-        │
-        ▼
-  Summarise the output for later tasks
-      │
-      ▼
-Final check and formatting → JSON answer
-```
-
 ## Design Principles
 
 - **Small models, simple steps:** each step is a narrow task, so lighter models handle complex analysis reliably

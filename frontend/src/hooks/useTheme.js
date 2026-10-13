@@ -13,7 +13,7 @@ export function useTheme() {
     try { localStorage.setItem(KEY, dark ? "dark" : "light"); } catch { /* storage unavailable */ }
     const root = document.documentElement;
     const prev = root.style.backgroundColor;
-    root.style.backgroundColor = dark ? "#10182b" : "";
+    root.style.backgroundColor = dark ? "#1c1d21" : "";
     return () => { root.style.backgroundColor = prev; };
   }, [dark]);
 

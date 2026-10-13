@@ -2,29 +2,6 @@
 
 A retrieval-augmented (RAG) assistant for the **Tools in Data Science (TDS)** course at IIT Madras. Students ask a question, optionally with a screenshot or a link to a course page or forum thread, and get an answer grounded in the course material and past Discourse discussions.
 
-## How It Works
-
-```
-Student question (+ optional image / link)
-      │
-      ▼
-Embed the question
-      │
-      ▼
-Vector search
- ├─ no link  → search course content and forum posts
- └─ link     → search only that page or thread
-      │
-      ▼
-Pull in neighbouring forum posts for context
-      │
-      ▼
-LLM answer generation (with the image, if supplied)
-      │
-      ▼
-Answer + source links
-```
-
 ## Knowledge Base
 
 | Collection | Source | Notes |

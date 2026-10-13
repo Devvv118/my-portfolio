@@ -1,159 +1,148 @@
 import { motion } from "framer-motion";
 
-// Warm-theme counterpart to the dark ProjectVisual: the same idea
-// (generative, technical, not a stock photo) recolored for the
-// cream/navy/gold palette, with a soft tinted wash instead of a
-// hard dark panel.
+// Project thumbnail in the same "blueprint" language as the hero: a navy sheet with a
+// faint engineering grid, gold registration marks, and a small line schematic of how
+// that particular project is put together (boxes = components, lines = data flow).
 
+const GOLD = "#c19a5b";
+const PAPER = "#e6d6b8";
+
+// Colours come from the theme variables, so tiles turn charcoal in dark mode.
 const tones = {
-  navy: { bg: "#1e2b47", line: "#e6d6b8", wash: "rgba(30,43,71,0.85)" },
-  gold: { bg: "#8a6b34", line: "#faf5ec", wash: "rgba(138,107,52,0.85)" }, // muted bronze
-  ink: { bg: "#2c3e63", line: "#e6d6b8", wash: "rgba(44,62,99,0.85)" }, // navy-metal
+  navy: "var(--color-navy)",
+  gold: "var(--color-navy)",
+  ink: "var(--color-navy-metal)",
 };
 
-function Bars({ line }) {
-  const bars = Array.from({ length: 22 });
-  return (
-    <svg viewBox="0 0 560 320" className="h-full w-full">
-      {bars.map((_, i) => {
-        const h = 50 + Math.abs(Math.sin(i * 0.8)) * 190 * (0.4 + ((i * 31) % 10) / 10);
-        return (
-          <motion.rect
-            key={i}
-            x={i * 25 + 6}
-            width={14}
-            rx={2}
-            fill={line}
-            initial={{ height: 0, y: 320 }}
-            whileInView={{ height: h, y: 320 - h }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, delay: i * 0.025, ease: [0.19, 1, 0.22, 1] }}
-            opacity={0.9}
-          />
-        );
-      })}
-    </svg>
-  );
-}
+// Each schematic is drawn on a 240 x 150 sheet. `b` = boxes [x, y, w, h, accent?], `l` = flow lines.
+const schematics = {
+  "io-workload-classifier": {
+    b: [
+      [80, 8, 80, 16, true],
+      [40, 36, 64, 16], [136, 36, 64, 16],
+      [80, 64, 80, 16],
+      [40, 92, 64, 16], [136, 92, 64, 16],
+      [80, 120, 80, 16],
+    ],
+    l: [
+      "M120 24V30M72 30H168M72 30V36M168 30V36",
+      "M72 52V58M168 52V58M72 58H168M120 58V64",
+      "M120 80V86M72 86H168M72 86V92M168 86V92",
+      "M72 108V114M168 108V114M72 114H168M120 114V120",
+    ],
+  },
+  "data-analyst-agent": {
+    b: [
+      [20, 14, 70, 26, true], [150, 14, 70, 26],
+      [150, 100, 70, 26], [20, 100, 70, 26],
+      [100, 62, 40, 26],
+    ],
+    l: [
+      "M90 27H150", "M185 40V100", "M150 113H90", "M55 100V40",
+      "M100 75H72M72 75V70", "M140 75H168",
+    ],
+  },
+  "virtual-teaching-assistant": {
+    b: [
+      [10, 54, 44, 42, true],
+      [84, 20, 56, 30], [84, 100, 56, 30],
+      [172, 54, 58, 42],
+    ],
+    l: ["M54 75H69V35H84", "M54 75H69V115H84", "M140 35H156V75H172", "M140 115H156V75H172"],
+  },
+  "vehicle-rental-system": {
+    b: [
+      [12, 14, 64, 48, true], [88, 14, 64, 48], [164, 14, 64, 48],
+      [88, 88, 64, 48],
+    ],
+    l: ["M76 38H88", "M152 38H164", "M120 62V88"],
+    rows: [[12, 14], [88, 14], [164, 14], [88, 88]],
+  },
+  "my-portfolio": {
+    b: [
+      [28, 10, 184, 130, true],
+      [44, 56, 48, 36], [96, 56, 48, 36], [148, 56, 48, 36],
+    ],
+    l: ["M28 28H212", "M44 42H100", "M44 106H196", "M44 118H150"],
+    dots: [[38, 19], [48, 19], [58, 19]],
+  },
+  "stock-macro-view": {
+    b: [
+      [10, 52, 40, 46, true], [72, 52, 44, 46],
+      [138, 52, 38, 46], [196, 40, 36, 70],
+    ],
+    l: ["M50 75H72", "M116 75H138", "M176 75H196"],
+    chart: "M202 98L210 84L217 91L226 70",
+    ticks: [[10, 30], [10, 118]],
+  },
+};
+const fallback = schematics["stock-macro-view"];
 
-function Wave({ line }) {
-  const path =
-    "M0,190 C50,140 100,230 150,180 C200,130 250,235 300,190 C350,145 400,225 450,175 C500,125 530,180 560,160";
+function Sheet({ s }) {
   return (
-    <svg viewBox="0 0 560 320" className="h-full w-full">
-      <motion.path
-        d={path}
-        fill="none"
-        stroke={line}
-        strokeWidth="3"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        whileInView={{ pathLength: 1, opacity: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
-      />
-      <motion.circle
-        cx={560}
-        cy={160}
-        r={5}
-        fill={line}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ delay: 1.3, duration: 0.4 }}
-      />
-    </svg>
-  );
-}
-
-function Nodes({ line }) {
-  const nodes = [[90, 70], [280, 50], [460, 100], [150, 190], [360, 210], [70, 260], [430, 250]];
-  const edges = [[0, 1], [1, 2], [1, 3], [3, 4], [4, 6], [3, 5], [0, 3]];
-  return (
-    <svg viewBox="0 0 560 320" className="h-full w-full">
-      {edges.map(([a, b], i) => (
-        <motion.line
-          key={i}
-          x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
-          stroke={line} strokeWidth="1.2" opacity={0.5}
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, delay: i * 0.07 }}
+    <svg viewBox="0 0 240 150" className="h-full w-full" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true">
+      {s.b.map(([x, y, w, h, accent], i) => (
+        <rect
+          key={i} x={x} y={y} width={w} height={h} rx={3}
+          fill={accent ? "rgba(193,154,91,0.16)" : "rgba(230,214,184,0.05)"}
+          stroke={accent ? GOLD : PAPER}
+          strokeOpacity={accent ? 0.95 : 0.6}
+          strokeWidth={1.1}
         />
       ))}
-      {nodes.map(([x, y], i) => (
-        <motion.circle
-          key={i}
-          cx={x} cy={y} r={i === 3 ? 8 : 5}
-          fill={line}
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5, delay: 0.35 + i * 0.05 }}
-        />
+      {(s.rows || []).map(([x, y], i) => (
+        <path key={i} d={`M${x} ${y + 14}H${x + 64}M${x + 8} ${y + 26}H${x + 38}M${x + 8} ${y + 36}H${x + 48}`} stroke={PAPER} strokeOpacity={0.45} strokeWidth={1} />
       ))}
+      {(s.dots || []).map(([x, y], i) => <circle key={i} cx={x} cy={y} r={2} fill={GOLD} />)}
+      {s.l.map((d, i) => <path key={i} d={d} stroke={GOLD} strokeOpacity={0.85} strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round" />)}
+      {s.chart && <path d={s.chart} stroke={PAPER} strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" />}
     </svg>
   );
 }
 
-function Radii({ line }) {
-  const rings = [40, 78, 116, 154];
+export default function WarmVisual({ project, className = "", label }) {
+  const s = schematics[project?.slug] || fallback;
+  const bg = tones[project?.warmAccent] || tones.navy;
   return (
-    <svg viewBox="0 0 560 320" className="h-full w-full">
-      <g transform="translate(280,160)">
-        {rings.map((r, i) => (
-          <motion.circle
-            key={i}
-            r={r}
-            fill="none"
-            stroke={line}
-            strokeWidth="1.4"
-            opacity={0.55 - i * 0.09}
-            initial={{ scale: 0.4, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 0.55 - i * 0.09 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.9, delay: i * 0.1, ease: [0.19, 1, 0.22, 1] }}
-          />
-        ))}
-        <motion.circle
-          r={5}
-          fill={line}
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
-        />
-      </g>
-    </svg>
-  );
-}
-
-const variants = { bars: Bars, wave: Wave, network: Nodes, radii: Radii };
-
-export default function WarmVisual({ variant = "bars", tone = "navy", className = "", label }) {
-  const Vis = variants[variant] || Bars;
-  const t = tones[tone] || tones.navy;
-  return (
-    <div className={`relative overflow-hidden ${className}`} style={{ backgroundColor: t.bg }}>
+    <div className={`relative overflow-hidden ${className}`} style={{ backgroundColor: bg }}>
+      {/* engineering grid */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0"
+        aria-hidden="true"
         style={{
           backgroundImage:
-            "radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,0.18), transparent 60%)",
+            "linear-gradient(to right, rgba(230,214,184,0.09) 1px, transparent 1px), linear-gradient(to bottom, rgba(230,214,184,0.09) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
         }}
       />
-      <div className="absolute inset-0 flex items-center justify-center p-6">
-        <Vis line={t.line} />
-      </div>
       <div
-        className="pointer-events-none absolute inset-0"
-        style={{ background: `linear-gradient(180deg, transparent 40%, ${t.wash} 100%)` }}
+        className="absolute inset-0"
+        aria-hidden="true"
+        style={{ background: "radial-gradient(90% 90% at 15% 0%, rgba(255,255,255,0.14), transparent 65%)" }}
       />
+
+      <motion.div
+        className="absolute inset-0 px-[12%] py-[10%]"
+        initial={{ opacity: 0, y: 6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+      >
+        <Sheet s={s} />
+      </motion.div>
+
+      {/* registration marks + sheet number */}
+      <span className="pointer-events-none absolute right-1.5 top-0.5 font-mono text-[11px] leading-none text-gold" aria-hidden="true">+</span>
+      <span className="pointer-events-none absolute bottom-0.5 right-1.5 font-mono text-[11px] leading-none text-gold" aria-hidden="true">+</span>
+      {project?.id && (
+        <span className="pointer-events-none absolute left-2 top-1.5 font-mono text-[9px] tracking-[0.18em] text-gold">{project.id}</span>
+      )}
+
       {label && (
-        <div className="absolute bottom-4 left-4 font-warm-display text-sm font-medium text-cream">
-          {label}
-        </div>
+        <>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2" style={{ background: "linear-gradient(180deg, transparent, var(--color-navy-deep))" }} />
+          <div className="absolute bottom-3 left-4 font-warm-display text-sm font-medium text-cream">{label}</div>
+        </>
       )}
     </div>
   );

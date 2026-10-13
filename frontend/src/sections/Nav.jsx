@@ -14,24 +14,51 @@ export default function Nav({ dark, onToggle }) {
   const [active, setActive] = useState("Home");
   const [indexOpen, setIndexOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+
+      // Hide while scrolling down, bring it back as soon as the user scrolls up (or is at the top).
+      if (y <= 8) setHidden(false);
+      else if (y > lastY + 4 && y > 80) setHidden(true);
+      else if (y < lastY - 4) setHidden(false);
+      lastY = y;
+
+      // Scroll-spy: the active link is the last section whose top has passed ~35% of the viewport.
+      const line = window.innerHeight * 0.35;
+      let current = links[0].label;
+      for (const l of links) {
+        const el = document.querySelector(l.href);
+        if (el && el.getBoundingClientRect().top <= line) current = l.label;
+      }
+      if (window.innerHeight + y >= document.documentElement.scrollHeight - 4) current = links[links.length - 1].label;
+      setActive(current);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
     <>
       <header
         className={`sticky top-0 z-50 flex items-center justify-between px-6 md:px-12 transition-all duration-300 ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        } ${
           scrolled
-            ? "py-4 bg-cream/90 dark:bg-navy-deep/90 backdrop-blur-md shadow-[0_12px_30px_-18px_rgba(16,24,43,0.45)]"
-            : "py-6 bg-cream/0"
+            ? "py-2.5 bg-cream/90 dark:bg-navy-deep/90 backdrop-blur-md shadow-[0_12px_30px_-18px_rgba(26,40,72,0.45)]"
+            : "py-3 bg-cream/0"
         }`}
       >
-        <a href="#top" className="text-warm-ink dark:text-cream" onClick={() => setActive("Home")}>
+        <a href="#top" className="text-warm-ink dark:text-cream">
           <Logo className="h-7 w-9" />
         </a>
 
@@ -41,7 +68,6 @@ export default function Nav({ dark, onToggle }) {
               <a
                 key={l.label}
                 href={l.href}
-                onClick={() => setActive(l.label)}
                 className={`relative pb-1 transition-colors hover:text-navy dark:hover:text-gold ${
                   active === l.label ? "text-navy dark:text-gold" : "text-warm-ink-soft dark:text-cream/70"
                 }`}

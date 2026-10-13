@@ -48,21 +48,17 @@ function Entry({ item, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
-      className="flex gap-5 py-7"
+      className="flex py-4"
     >
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold bg-cream-deep font-mono text-xs text-gold-deep shadow-[0_10px_20px_-10px_rgba(193,154,91,0.6)] dark:bg-warm-ink dark:text-gold">
-        {item.id}
-      </div>
-
       <div className="min-w-0 flex-1">
         <div className="font-mono text-[10px] tracking-[0.2em] text-gold-deep dark:text-gold">{item.period.toUpperCase()}</div>
-        <h3 className="mt-2 font-warm-display text-xl font-medium text-warm-ink dark:text-cream">{item.org}</h3>
+        <h3 className="mt-1.5 font-warm-display text-lg font-medium text-warm-ink dark:text-cream">{item.org}</h3>
         <p className="mt-1 text-sm font-light text-warm-ink-soft dark:text-cream/70">{item.title}</p>
 
         {item.project && (
           <Link
             to={item.project.to}
-            className="mt-3 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.1em] text-warm-ink underline decoration-gold underline-offset-4 transition-colors hover:text-gold-deep dark:text-cream dark:hover:text-gold"
+            className="mt-2 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.1em] text-warm-ink underline decoration-gold underline-offset-4 transition-colors hover:text-gold-deep dark:text-cream dark:hover:text-gold"
           >
             {item.project.label.toUpperCase()} <span aria-hidden="true">→</span>
           </Link>
@@ -75,7 +71,7 @@ function Entry({ item, index }) {
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
               aria-controls={panelId}
-              className="mt-3 inline-flex items-center gap-2 rounded-full border border-gold px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-gold-deep transition-colors hover:bg-gold/15 dark:text-gold"
+              className="mt-2 inline-flex items-center gap-2 rounded-full border border-gold px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-gold-deep transition-colors hover:bg-gold/15 dark:text-gold"
             >
               WHAT I DID
               <span aria-hidden="true" className={`inline-block transition-transform duration-300 ${open ? "rotate-45" : ""}`}>+</span>
@@ -118,11 +114,11 @@ function Column({ label, items, offset = 0 }) {
 
 export default function Process() {
   return (
-    <section id="experience" className="relative bg-cream-deep px-6 py-14 dark:bg-warm-ink md:px-12 md:py-16">
+    <section id="experience" className="relative bg-cream-deep px-6 py-7 dark:bg-warm-ink md:px-20 md:py-8 lg:px-32">
       <span className="font-mono text-[11px] tracking-[0.2em] text-gold-deep dark:text-gold">EDUCATION &amp; EXPERIENCE</span>
-      <div className="mb-8" />
+      <div className="mb-4" />
 
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
         <Column label="EDUCATION" items={education} />
         <Column label="EXPERIENCE" items={experience} offset={2} />
       </div>

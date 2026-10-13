@@ -2,42 +2,6 @@
 
 An ML-driven control plane that classifies storage workloads, detects hotspots, predicts capacity exhaustion, and auto-rebalances data across nodes and media tiers to meet SLOs.
 
-## Architecture Overview
-
-```
-Telemetry Agents
-      │
-      ▼
-Kafka Message Bus
-      │
-      ▼
-Stream Processing (Feature Engineering)
-      │
-   ┌──┴──┐
-   ▼     ▼
-Online  Offline
-Feature Feature
-Store   Store
-   │     │
-   └──┬──┘
-      ▼
-Model Inference Hub
-(Classification · Hotspot Detection · Forecasting)
-      │
-      ▼
-Decision & Policy Engine
-      │
-   ┌──┴──┐
-   ▼     ▼
-Rebalancer  Auto-Scaler
-      │
-      ▼
-Actuators (CSI / Array APIs)
-      │
-      ▼
-Execution Monitor + Observability (feedback loop)
-```
-
 ## Workload Classes
 
 | Class | IOPS Profile | Throughput | Latency | Block Size |

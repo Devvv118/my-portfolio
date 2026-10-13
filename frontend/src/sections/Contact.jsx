@@ -53,13 +53,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-navy px-6 py-14 md:px-12 md:py-16">
+    <section id="contact" className="relative overflow-hidden bg-navy px-6 py-7 md:px-20 md:py-8 lg:px-32">
       <AmbientGlow variant="footer" />
 
       <div className="relative z-10">
-        <span className="mb-8 block font-mono text-[11px] tracking-[0.2em] text-gold">CONTACT</span>
+        <span className="mb-4 block font-mono text-[11px] tracking-[0.2em] text-gold">CONTACT</span>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {direct.map((d, i) => (
             <motion.button
               key={d.label}
@@ -67,7 +67,7 @@ export default function Contact() {
               {...rise(i)}
               onClick={() => onCopy(d)}
               aria-label={`Copy ${d.label.toLowerCase()}: ${d.value}`}
-              className="group flex w-full cursor-pointer flex-col gap-2 rounded-2xl border border-white/15 bg-white/[0.04] px-6 py-5 text-left backdrop-blur-sm transition-colors hover:border-gold"
+              className="group flex w-full cursor-pointer flex-col gap-2 rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3.5 text-left backdrop-blur-sm transition-colors hover:border-gold"
             >
               <span className="flex items-center justify-between font-mono text-[10px] tracking-[0.2em] text-white/50">
                 {d.label}
@@ -80,7 +80,7 @@ export default function Contact() {
           ))}
         </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {profile.socials.map((s, i) => (
             <motion.a
               key={s.label}
@@ -88,7 +88,7 @@ export default function Contact() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3.5 font-mono text-[12px] tracking-[0.2em] text-cream backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold hover:text-navy"
+              className="group flex items-center justify-between rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3 font-mono text-[12px] tracking-[0.2em] text-cream backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold hover:text-navy"
             >
               {s.label.toUpperCase()}
               <Arrow />
@@ -96,7 +96,7 @@ export default function Contact() {
           ))}
         </div>
 
-        <motion.div {...rise(6)} className="mt-10 flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-white/50">
+        <motion.div {...rise(6)} className="mt-5 flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-white/50">
           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" aria-hidden="true">
             <path d="M6 13s5-4.2 5-7.6A5 5 0 0 0 1 5.4C1 8.8 6 13 6 13Z" stroke="currentColor" strokeWidth="1.2" />
             <circle cx="6" cy="5.4" r="1.7" stroke="currentColor" strokeWidth="1.2" />
