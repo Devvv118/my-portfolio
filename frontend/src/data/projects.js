@@ -9,7 +9,7 @@ export const projects = [
     kind: "Team Project", // optional, shown after the org
     description:
       "An ML/Rule Based platform that classifies storage workloads, detects hotspots, and auto rebalances data across nodes.",
-    stack: ["Python", "Kafka", "Keras/TF", "FastAPI", "Redis", "MLflow"],
+    stack: ["Kafka", "Keras/TF", "FastAPI", "Redis", "MLflow"],
     github: "https://github.com/Devvv118/workload_classification",
     live: "", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -25,7 +25,7 @@ export const projects = [
     org: "IITM",
     description:
       "LLM agent that breaks questions into tasks, writes and debugs Python, returns JSON.",
-    stack: ["Python", "FastAPI", "Gemini", "GPT-4o-mini", "uv"],
+    stack: ["FastAPI", "Agentic AI", "Sandboxing", ""],
     github: "https://github.com/Devvv118/data-analyst-agent",
     live: "https://data-analyst-agent-rho-self.vercel.app/", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -40,7 +40,7 @@ export const projects = [
     category: "AI / RAG",
     org: "IITM",
     description: "RAG-based teaching assistant that answers questions for an IITM course.",
-    stack: ["Python", "FastAPI", "Typesense", "OpenAI"],
+    stack: ["FastAPI", "RAG", "PostgreSQL", "Typesense", "Embeddings"],
     github: "https://github.com/Devvv118/virtual-teaching-assistant",
     live: "https://virtual-teaching-assistant-pink.vercel.app/", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
