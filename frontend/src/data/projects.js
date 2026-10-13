@@ -56,7 +56,7 @@ export const projects = [
     kind: "Personal Project",
     description:
       "Full-stack car rental manager handling reservations, returns, fees, payments, and maintenance.",
-    stack: ["FastAPI", "React", "TypeScript", "MySQL", "SQLAlchemy"],
+    stack: ["FastAPI", "React", "PostgreSQL", "SQLAlchemy"],
     github: "https://github.com/Devvv118/vehicle-rental-system",
     live: "https://vehicle-rental-system-phi-three.vercel.app/dashboard", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -72,7 +72,7 @@ export const projects = [
     kind: "Personal Project",
     description:
       "This site: a React and Tailwind portfolio with light and dark themes and markdown driven project pages.",
-    stack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Express", "TypeScript"],
+    stack: ["React", "Frontend"],
     github: "https://github.com/Devvv118/my-portfolio",
     live: "", // none: this site is the live demo
     liveReload: true, // LIVE DEMO button reloads the current page instead of opening a link
@@ -89,7 +89,7 @@ export const projects = [
     category: "Full Stack",
     kind: "Personal Project",
     description: "MERN dashboard for stocks, news sentiment, and macroeconomic trends.",
-    stack: ["MongoDB", "Express", "React", "Node.js", "AWS"],
+    stack: ["MongoDB", "MERN", "AWS"],
     github: "https://github.com/Devvv118/quick_stock_market",
     live: "", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
