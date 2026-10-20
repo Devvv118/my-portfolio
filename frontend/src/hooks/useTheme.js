@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { trackTheme } from "../utils/track";
 
 const KEY = "theme"; // shared by the home and project pages
 
@@ -17,5 +18,11 @@ export function useTheme() {
     return () => { root.style.backgroundColor = prev; };
   }, [dark]);
 
-  return [dark, () => setDark((d) => !d)];
+  // Only user-initiated switches are tracked (not the initial load).
+  const toggle = () => {
+    trackTheme(dark ? "light" : "dark");
+    setDark(!dark);
+  };
+
+  return [dark, toggle];
 }

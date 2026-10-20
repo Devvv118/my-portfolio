@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import RevealText from "../components/RevealText";
 import WarmVisual from "../components/WarmVisual";
 import { projects } from "../data/projects";
+import { trackProject } from "../utils/track";
 
 function GithubIcon() {
   return (
@@ -39,7 +40,7 @@ export default function Work() {
             transition={{ duration: 0.6, delay: i * 0.04, ease: [0.19, 1, 0.22, 1] }}
             className="group grid grid-cols-1 items-center gap-3 py-4 md:grid-cols-12 md:gap-6 md:py-5"
           >
-            <Link to={`/projects/${p.slug}`} className="block md:col-span-2" aria-label={`Open ${p.title}`}>
+            <Link to={`/projects/${p.slug}`} onClick={() => trackProject(p.slug, "open")} className="block md:col-span-2" aria-label={`Open ${p.title}`}>
               <WarmVisual
                 project={p}
                 className="aspect-[4/3] w-full max-w-[120px] rounded-lg dark:ring-1 dark:ring-white/10 shadow-[0_14px_28px_-16px_rgba(26,40,72,0.5)]"
@@ -51,7 +52,7 @@ export default function Work() {
                 {p.id} — {p.category.toUpperCase()}
               </div>
               <h3 className="font-warm-display text-xl md:text-2xl font-medium text-warm-ink dark:text-cream transition-colors group-hover:text-navy dark:group-hover:text-gold">
-                <Link to={`/projects/${p.slug}`}>{p.title}</Link>
+                <Link to={`/projects/${p.slug}`} onClick={() => trackProject(p.slug, "open")}>{p.title}</Link>
               </h3>
               {(p.org || p.kind) && (
                 <div className="mt-1.5 font-mono text-[10px] tracking-[0.2em] text-gold-deep dark:text-gold">
@@ -79,6 +80,7 @@ export default function Work() {
             <div className="md:col-span-1 flex md:justify-end">
               <a
                 href={p.github}
+                onClick={() => trackProject(p.slug, "github")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-warm-ink-soft dark:border-white/30 text-warm-ink dark:text-cream transition-colors hover:border-navy hover:text-navy dark:hover:border-gold dark:hover:text-gold"

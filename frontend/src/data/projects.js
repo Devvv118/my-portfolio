@@ -9,7 +9,7 @@ export const projects = [
     kind: "Team Project", // optional, shown after the org
     description:
       "An ML/Rule Based platform that classifies storage workloads, detects hotspots, and auto rebalances data across nodes.",
-    stack: ["Kafka", "Keras/TF", "FastAPI", "Redis", "MLflow"],
+    stack: ["Python", "Kafka", "Keras/TF", "FastAPI", "Redis", "MLflow"],
     github: "https://github.com/Devvv118/workload_classification",
     live: "", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -25,7 +25,7 @@ export const projects = [
     org: "IITM",
     description:
       "LLM agent that breaks questions into tasks, writes and debugs Python, returns JSON.",
-    stack: ["FastAPI", "Agentic AI", "Sandboxing", ""],
+    stack: ["Python", "FastAPI", "Gemini", "GPT-4o-mini", "uv"],
     github: "https://github.com/Devvv118/data-analyst-agent",
     live: "https://data-analyst-agent-rho-self.vercel.app/", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -40,7 +40,7 @@ export const projects = [
     category: "AI / RAG",
     org: "IITM",
     description: "RAG-based teaching assistant that answers questions for an IITM course.",
-    stack: ["FastAPI", "RAG", "PostgreSQL", "Typesense", "Embeddings"],
+    stack: ["Python", "FastAPI", "Typesense", "OpenAI"],
     github: "https://github.com/Devvv118/virtual-teaching-assistant",
     live: "https://virtual-teaching-assistant-pink.vercel.app/", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -56,7 +56,7 @@ export const projects = [
     kind: "Personal Project",
     description:
       "Full-stack car rental manager handling reservations, returns, fees, payments, and maintenance.",
-    stack: ["FastAPI", "React", "PostgreSQL", "SQLAlchemy"],
+    stack: ["FastAPI", "React", "TypeScript", "MySQL", "SQLAlchemy"],
     github: "https://github.com/Devvv118/vehicle-rental-system",
     live: "https://vehicle-rental-system-phi-three.vercel.app/dashboard", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -72,7 +72,7 @@ export const projects = [
     kind: "Personal Project",
     description:
       "This site: a React and Tailwind portfolio with light and dark themes and markdown driven project pages.",
-    stack: ["React", "Frontend"],
+    stack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Express", "TypeScript"],
     github: "https://github.com/Devvv118/my-portfolio",
     live: "", // none: this site is the live demo
     liveReload: true, // LIVE DEMO button reloads the current page instead of opening a link
@@ -89,7 +89,7 @@ export const projects = [
     category: "Full Stack",
     kind: "Personal Project",
     description: "MERN dashboard for stocks, news sentiment, and macroeconomic trends.",
-    stack: ["MongoDB", "MERN", "AWS"],
+    stack: ["MongoDB", "Express", "React", "Node.js", "AWS"],
     github: "https://github.com/Devvv118/quick_stock_market",
     live: "", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")

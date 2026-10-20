@@ -6,7 +6,12 @@ import { getWriteup } from "../data/writeups";
 import Demo from "./project-detail/Demo";
 import Readme from "./project-detail/Readme";
 import { useTheme } from "../hooks/useTheme";
+import { trackProject } from "../utils/track";
 import { GithubIcon, LinkButton, LiveIcon, Tags, TopBar } from "./project-detail/parts";
+
+// The demo-video section is switched off for now. All the code (Demo.jsx, the `demo` field in
+// projects.js) is kept — set this to true to bring it back for every project.
+const SHOW_DEMO_VIDEO = false;
 
 // First child of a content block sits flush under its heading.
 const flush = "mt-3 [&>:first-child]:mt-0";
@@ -66,8 +71,12 @@ export default function ProjectDetail() {
 
   const w = getWriteup(slug);
 
-  // Sections are numbered automatically; a section is skipped when its content is null/empty.
+  // Architecture comes first, then everything else follows. Sections are numbered automatically; a section is skipped when its content is null/empty.
   const sections = [
+    {
+      key: "architecture", label: "ARCHITECTURE", title: "How it fits together", show: !!diagrams[slug],
+      body: <Architecture slug={slug} />,
+    },
     {
       key: "about", label: "OVERVIEW", title: "About the project", show: !!w.about,
       body: (
@@ -85,12 +94,8 @@ export default function ProjectDetail() {
       body: <div className={flush}><Readme source={w.learning} /></div>,
     },
     {
-      key: "demo", label: "DEMO", title: "See it in action", show: !p.hideDemo,
+      key: "demo", label: "DEMO", title: "See it in action", show: SHOW_DEMO_VIDEO && !p.hideDemo,
       body: <Demo url={p.demo} title={p.title} />,
-    },
-    {
-      key: "architecture", label: "ARCHITECTURE", title: "How it fits together", show: !!diagrams[slug],
-      body: <Architecture slug={slug} />,
     },
     {
       key: "readme", label: "README", title: "README.md", show: true,
@@ -112,11 +117,11 @@ export default function ProjectDetail() {
         <p className="mt-3 max-w-xl font-warm-serif text-lg font-light text-warm-ink-soft md:text-xl dark:text-cream/70">{p.description}</p>
         <Tags items={p.stack} className="mt-4" />
         <div className="mt-4 flex flex-wrap gap-3">
-          <LinkButton href={p.github} icon={<GithubIcon />} primary>GITHUB</LinkButton>
+          <LinkButton href={p.github} onTrack={() => trackProject(slug, "github")} icon={<GithubIcon />} primary>GITHUB</LinkButton>
           {p.liveReload ? (
-            <LinkButton onClick={() => window.location.reload()} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
+            <LinkButton onClick={() => window.location.reload()} onTrack={() => trackProject(slug, "live")} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
           ) : (
-            <LinkButton href={p.live} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
+            <LinkButton href={p.live} onTrack={() => trackProject(slug, "live")} icon={<LiveIcon />}>LIVE DEMO</LinkButton>
           )}
         </div>
       </header>
