@@ -4,12 +4,12 @@ export const projects = [
     slug: "io-workload-classifier",
     title: "IO Workload Classification & Hotspot Detection",
     short: "Workload Classification & Hotspot Detection",
-    category: "Big Data / Real Time Systems / ML",
+    category: "Real Time Systems / ML",
     org: "HPE", // line under the title on the Work list (optional)
     kind: "Team Project", // optional, shown after the org
     description:
       "An ML/Rule Based platform that classifies storage workloads, detects hotspots, and auto rebalances data across nodes.",
-    stack: ["Python", "Kafka", "Keras/TF", "FastAPI", "Redis", "MLflow"],
+    stack: ["Docker", "Kafka", "Keras/TF", "FastAPI", "Redis", "Prometheus", "Grafana"],
     github: "https://github.com/Devvv118/workload_classification",
     live: "", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -24,8 +24,8 @@ export const projects = [
     category: "AI Agents",
     org: "IITM",
     description:
-      "LLM agent that breaks questions into tasks, writes and debugs Python, returns JSON.",
-    stack: ["Python", "FastAPI", "Gemini", "GPT-4o-mini", "uv"],
+      "LLM agent that uses light weight models to solve complex tasks.",
+    stack: ["Sandbox","Prompt Engineering", "Chain of Thought", "FastAPI", "Python"],
     github: "https://github.com/Devvv118/data-analyst-agent",
     live: "https://data-analyst-agent-rho-self.vercel.app/", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -40,7 +40,7 @@ export const projects = [
     category: "AI / RAG",
     org: "IITM",
     description: "RAG-based teaching assistant that answers questions for an IITM course.",
-    stack: ["Python", "FastAPI", "Typesense", "OpenAI"],
+    stack: ["RAG", "Typesense", "PostgreSQL", "Gemini/GPT API", "FastAPI", "Python", "React"],
     github: "https://github.com/Devvv118/virtual-teaching-assistant",
     live: "https://virtual-teaching-assistant-pink.vercel.app/", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
@@ -55,46 +55,13 @@ export const projects = [
     category: "Full Stack",
     kind: "Personal Project",
     description:
-      "Full-stack car rental manager handling reservations, returns, fees, payments, and maintenance.",
-    stack: ["FastAPI", "React", "TypeScript", "MySQL", "SQLAlchemy"],
+      "My first full stack project.",
+    stack: ["FastAPI", "React", "TypeScript", "PostgreSQL", "SQLAlchemy"],
     github: "https://github.com/Devvv118/vehicle-rental-system",
     live: "https://vehicle-rental-system-phi-three.vercel.app/dashboard", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
     variant: "bars",
     warmAccent: "gold",
-  },
-  {
-    id: "05",
-    slug: "my-portfolio",
-    title: "Personal Portfolio Website",
-    short: "Portfolio",
-    category: "Frontend",
-    kind: "Personal Project",
-    description:
-      "This site: a React and Tailwind portfolio with light and dark themes and markdown driven project pages.",
-    stack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Express", "TypeScript"],
-    github: "https://github.com/Devvv118/my-portfolio",
-    live: "", // none: this site is the live demo
-    liveReload: true, // LIVE DEMO button reloads the current page instead of opening a link
-    hideDemo: true, // no demo video section
-    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
-    variant: "wave",
-    warmAccent: "ink",
-  },
-  {
-    id: "06",
-    slug: "stock-macro-view",
-    title: "Stock Macro View Platform",
-    short: "Stock Macro View",
-    category: "Full Stack",
-    kind: "Personal Project",
-    description: "MERN dashboard for stocks, news sentiment, and macroeconomic trends.",
-    stack: ["MongoDB", "Express", "React", "Node.js", "AWS"],
-    github: "https://github.com/Devvv118/quick_stock_market",
-    live: "", // deployment URL (leave empty until it exists)
-    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
-    variant: "radii",
-    warmAccent: "ink",
   },
 ];
 
@@ -112,9 +79,10 @@ export const profile = {
     { label: "Resume", href: "https://drive.google.com/file/d/1IX91QbykJWcoK7uPIFlffFeBxHPdjAxa/view?usp=sharing" },
   ],
   skills: [
-    { group: "Languages", items: ["Python", "Rust", "SQL", "TypeScript"] },
-    { group: "ML / Data", items: ["XGBoost", "PyTorch", "MLflow", "ONNX"] },
-    { group: "Systems", items: ["Kafka", "Redis", "Docker", "Tokio"] },
-    { group: "Infra", items: ["PostgreSQL", "Prometheus", "FastAPI", "AWS"] },
+    { group: "Languages", items: ["Python", "JavaScript", "C/C++", "SQL", "Java (Basics)", "Rust (Basics)"] },
+    { group: "ML & Data", items: ["PyTorch", "Keras", "Pandas", "NumPy", "scikit-learn"] },
+    { group: "Backend, Frontend & Database", items: ["FastAPI", "Node.js", "Express.js", "React", "MongoDB", "PostgreSQL"] },
+    { group: "Cloud & DevOps", items: ["Docker", "AWS", "Prometheus", "Grafana"] },
+    { group: "Tools", items: ["Git", "GitHub", "Postman"] },
   ],
 };
