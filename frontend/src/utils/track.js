@@ -1,5 +1,4 @@
 // Fire-and-forget usage tracking. Never throws and never blocks the UI.
-// Set VITE_API_URL to the deployed backend (see .env.example); defaults to the local dev server.
 const API = (import.meta.env.VITE_API_URL || "http://localhost:3000").replace(/\/$/, "");
 
 function send(path, body) {
