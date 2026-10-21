@@ -79,8 +79,23 @@ export async function recordProject(slug, action) {
 
 export async function getStats() {
     await load();
+    const sum = (action) => Object.values(stats.projects).reduce((n, p) => n + (p[action]?.count ?? 0), 0);
+    // Per-project total makes it easy for dashboards to sort/rank without extra maths.
+    const projects = Object.fromEntries(
+        Object.entries(stats.projects).map(([slug, p]) => [
+            slug,
+            { ...p, total: (p.open?.count ?? 0) + (p.github?.count ?? 0) + (p.live?.count ?? 0) },
+        ]),
+    );
     return {
-        ...stats,
-        totals: { themeSwitches: stats.theme.toDark.count + stats.theme.toLight.count },
+        theme: stats.theme,
+        projects,
+        totals: {
+            themeSwitches: stats.theme.toDark.count + stats.theme.toLight.count,
+            projectOpens: sum("open"),
+            githubClicks: sum("github"),
+            liveClicks: sum("live"),
+        },
+        generatedAt: new Date().toISOString(),
     };
 }

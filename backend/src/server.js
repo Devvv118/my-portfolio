@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { timingSafeEqual } from "node:crypto";
 import express from "express";
 import cors from "cors";
 import { getStats, recordProject, recordTheme } from "./store.js";
@@ -7,7 +8,7 @@ const app = express();
 
 // CORS_ORIGIN: comma-separated list of allowed frontends (e.g. your Vercel URL). Unset = allow all.
 const origins = process.env.CORS_ORIGIN?.split(",").map((s) => s.trim()).filter(Boolean);
-app.use(cors(origins?.length ? { origin: origins } : {}));
+app.use(cors({ ...(origins?.length ? { origin: origins } : {}), allowedHeaders: ["Content-Type", "x-stats-key"] }));
 app.use(express.json({ limit: "1kb" }));
 
 app.get("/", (_, res) => {
@@ -56,12 +57,21 @@ app.post("/api/track/project", throttle, async (req, res) => {
     res.status(204).end();
 });
 
-// If STATS_KEY is set, send it as the x-stats-key header (or ?key=).
+// GET /api/stats — your numbers. If STATS_KEY is set, send it as the x-stats-key header (or ?key=).
+// Other sites (e.g. your email dashboard) can read it too: add their origin to CORS_ORIGIN.
+const sameKey = (given, expected) => {
+    if (typeof given !== "string") return false;
+    const a = Buffer.from(given);
+    const b = Buffer.from(expected);
+    return a.length === b.length && timingSafeEqual(a, b);
+};
+
 app.get("/api/stats", async (req, res) => {
     const key = process.env.STATS_KEY;
-    if (key && req.get("x-stats-key") !== key && req.query.key !== key) {
+    if (key && !sameKey(req.get("x-stats-key"), key) && !sameKey(req.query.key, key)) {
         return res.status(401).json({ error: "unauthorized" });
     }
+    res.set("Cache-Control", "no-store");
     res.json(await getStats());
 });
 
