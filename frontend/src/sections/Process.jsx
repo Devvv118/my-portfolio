@@ -18,6 +18,12 @@ const education = [
   },
 ];
 
+// Renders **bold** segments inside a plain detail string.
+const withBold = (text) =>
+  text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 ? <strong key={i} className="font-medium text-warm-ink dark:text-cream">{part}</strong> : part,
+  );
+
 const experience = [
   {
     id: "03",
@@ -25,8 +31,8 @@ const experience = [
     title: "Intern",
     period: "May 2025 — June 2025",
     details: [
-      "Built Python and SQL based scripts in SAP Datasphere to automate data transformation, validation, and integration workflows for enterprise analytics.",
-      "Worked with SAP Datasphere, Integration Suite (CPI), and AI Launchpad, gaining practical exposure to data modeling, pipeline integration, and AI-driven data workflows.",
+      "Built **Python** and **SQL** based scripts in SAP Datasphere to automate data transformation, validation, and integration workflows for enterprise analytics.",
+      "Worked with SAP Datasphere and the Integration Suite (CPI), gaining practical exposure to data modeling and pipeline integration.",
     ],
   },
   {
@@ -88,7 +94,7 @@ function Entry({ item, index }) {
                 >
                   <ul className="mt-4 list-disc space-y-2 pl-5 marker:text-gold">
                     {item.details.map((d) => (
-                      <li key={d} className="text-sm font-light leading-relaxed text-warm-ink-soft dark:text-cream/70">{d}</li>
+                      <li key={d} className="text-sm font-light leading-relaxed text-warm-ink-soft dark:text-cream/70">{withBold(d)}</li>
                     ))}
                   </ul>
                 </motion.div>

@@ -22,7 +22,7 @@ export default function Skills() {
             </div>
             <div className="flex flex-wrap gap-1.5 md:col-span-9">
               {g.items.map((item) => (
-                <span key={item} className="rounded-full border border-cream-line px-2.5 py-0.5 font-mono text-[11px] text-warm-ink-soft dark:border-white/20 dark:text-cream/75">
+                <span key={item} className="rounded-full border border-warm-ink/30 px-2.5 py-0.5 font-mono text-xs font-semibold text-warm-ink dark:border-white/35 dark:text-cream">
                   {item}
                 </span>
               ))}
