@@ -1,6 +1,7 @@
 import { useTheme } from "../hooks/useTheme";
 import Nav from "../sections/Nav";
 import Hero from "../sections/Hero";
+import Skills from "../sections/Skills";
 import Categories from "../sections/Categories";
 import Work from "../sections/Work";
 import Process from "../sections/Process";
@@ -16,6 +17,7 @@ export default function Home() {
         <Nav dark={dark} onToggle={toggleTheme} />
         <Hero />
         <Categories />
+        <Skills />
         <Work />
         <Process />
         <Contact />

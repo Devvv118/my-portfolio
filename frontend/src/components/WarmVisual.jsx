@@ -58,25 +58,17 @@ const schematics = {
     l: ["M76 38H88", "M152 38H164", "M120 62V88"],
     rows: [[12, 14], [88, 14], [164, 14], [88, 88]],
   },
-  "my-portfolio": {
+  "portfolio-intelligence-platform": {
     b: [
-      [28, 10, 184, 130, true],
-      [44, 56, 48, 36], [96, 56, 48, 36], [148, 56, 48, 36],
-    ],
-    l: ["M28 28H212", "M44 42H100", "M44 106H196", "M44 118H150"],
-    dots: [[38, 19], [48, 19], [58, 19]],
-  },
-  "stock-macro-view": {
-    b: [
-      [10, 52, 40, 46, true], [72, 52, 44, 46],
+      [10, 52, 40, 46, true], [72, 20, 44, 34], [72, 96, 44, 34],
       [138, 52, 38, 46], [196, 40, 36, 70],
     ],
-    l: ["M50 75H72", "M116 75H138", "M176 75H196"],
+    l: ["M50 75H61V37H72", "M50 75H61V113H72", "M116 37H127V75H138", "M116 113H127V75H138", "M176 75H196"],
     chart: "M202 98L210 84L217 91L226 70",
     ticks: [[10, 30], [10, 118]],
   },
 };
-const fallback = schematics["stock-macro-view"];
+const fallback = schematics["portfolio-intelligence-platform"];
 
 function Sheet({ s }) {
   return (

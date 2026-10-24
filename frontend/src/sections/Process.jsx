@@ -34,7 +34,7 @@ const experience = [
     org: "Hewlett Packard Enterprise",
     title: "Career Preview Program",
     period: "6 months, 2026",
-    project: { label: "IO Workload Classification Platform", to: "/projects/io-workload-classifier" },
+    project: { label: "Autonomous Storage Control Plane", to: "/projects/io-workload-classifier" },
   },
 ];
 

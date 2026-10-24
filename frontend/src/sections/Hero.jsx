@@ -36,7 +36,7 @@ export default function Hero() {
             <h1 className="font-warm-display text-4xl tracking-tight text-navy dark:text-cream md:text-6xl">
               {profile.name}
             </h1>
-            <p className="mt-4 max-w-lg border-t border-cream-line pt-4 text-base font-light leading-relaxed text-warm-ink-soft dark:border-white/10 dark:text-cream/70 md:mt-5 md:pt-5 md:text-lg">
+            <p className="mt-4 max-w-lg border-t border-cream-line pt-4 text-base font-medium leading-relaxed text-warm-ink dark:border-white/10 dark:text-cream/90 md:mt-5 md:pt-5 md:text-lg">
               {profile.bio}
             </p>
             <a
@@ -48,7 +48,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="w-full shrink-0 rounded-2xl border border-transparent bg-navy p-4 text-cream shadow-[0_28px_50px_-24px_rgba(26,40,72,0.6)] dark:border-gold/40 dark:bg-warm-ink md:w-auto md:p-5">
+          <div className="w-full shrink-0 rounded-2xl border border-transparent bg-navy p-4 text-cream shadow-[0_28px_50px_-24px_rgba(26,40,72,0.6)] dark:border-gold/40 dark:bg-warm-ink md:mt-10 md:w-auto md:p-5">
             <span className="font-mono text-[10px] tracking-[0.2em] text-gold">CONNECT</span>
             <div className="mt-3 flex flex-row flex-wrap gap-2 md:flex-col md:flex-nowrap">
               {profile.socials.map((s) => (

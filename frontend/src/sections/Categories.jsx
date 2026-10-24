@@ -5,12 +5,13 @@ import { projects } from "../data/projects";
 
 const MotionLink = motion.create(Link);
 // Pick the three featured tiles by slug, so reordering or adding projects never changes them.
-const FEATURED_SLUGS = ["io-workload-classifier", "virtual-teaching-assistant", "data-analyst-agent"];
+const FEATURED_SLUGS = ["io-workload-classifier", "portfolio-intelligence-platform", "data-analyst-agent"];
 const featured = FEATURED_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter(Boolean);
 
 export default function Categories() {
   return (
     <section className="relative bg-cream dark:bg-navy-deep px-6 pb-10 md:px-20 md:pb-14 lg:px-32">
+      <div className="mb-4 font-mono text-[11px] font-semibold tracking-[0.2em] text-gold-deep dark:text-gold">FEATURED</div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
         {featured.map((p, i) => {
           return (

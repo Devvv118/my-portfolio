@@ -2,15 +2,15 @@ export const projects = [
   {
     id: "01",
     slug: "io-workload-classifier",
-    title: "IO Workload Classification & Hotspot Detection",
-    short: "Workload Classification & Hotspot Detection",
+    title: "Autonomous Storage Control Plane",
+    short: "Storage Control Plane",
     category: "Real Time Systems / ML",
     org: "HPE", // line under the title on the Work list (optional)
     kind: "Team Project", // optional, shown after the org
     description:
-      "An ML/Rule Based platform that classifies storage workloads, detects hotspots, and auto rebalances data across nodes.",
-    stack: ["Docker", "Kafka", "Keras/TF", "FastAPI", "Redis", "Prometheus", "Grafana"],
-    github: "https://github.com/Devvv118/workload_classification",
+      "A closed-loop platform that classifies storage workloads, detects hotspots, forecasts risk and rebalances volumes on its own, with guardrails that roll back anything that makes things worse.",
+    stack: ["Kafka", "Redis", "FastAPI", "LightGBM", "PyTorch", "Docker", "Prometheus", "Grafana"],
+    github: "https://github.com/hpe-cpp2026-vit-vellore/IO-Workload-Pattern-Classification-Hotspot-Detection",
     live: "", // deployment URL (leave empty until it exists)
     demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
     variant: "bars",
@@ -18,6 +18,22 @@ export const projects = [
   },
   {
     id: "02",
+    slug: "portfolio-intelligence-platform",
+    title: "Portfolio Intelligence & Cloud Monitoring Platform",
+    short: "Intelligence & Monitoring",
+    category: "Cloud / AI",
+    kind: "Personal Project",
+    description:
+      "A serverless AWS system that turns Gmail into job and incident reports with Gemini, monitors my deployed services, and tracks portfolio traffic in one dashboard.",
+    stack: ["AWS Lambda", "DynamoDB", "EventBridge", "S3 / SNS", "Gemini API", "React", "Express"],
+    github: "https://github.com/Devvv118/email-dashboard",
+    live: "https://career-dashboard-tau.vercel.app/", // deployment URL (leave empty until it exists)
+    demo: "", // demo video: YouTube/Vimeo link or .mp4 path (empty = "coming soon")
+    variant: "network",
+    warmAccent: "navy",
+  },
+  {
+    id: "03",
     slug: "data-analyst-agent",
     title: "Data Analyst Agent",
     short: "Data Analyst Agent",
@@ -33,7 +49,7 @@ export const projects = [
     warmAccent: "navy",
   },
   {
-    id: "03",
+    id: "04",
     slug: "virtual-teaching-assistant",
     title: "Virtual Teaching Assistant",
     short: "Teaching Assistant",
@@ -48,7 +64,7 @@ export const projects = [
     warmAccent: "gold",
   },
   {
-    id: "04",
+    id: "05",
     slug: "vehicle-rental-system",
     title: "Vehicle Rental System",
     short: "Vehicle Rental",

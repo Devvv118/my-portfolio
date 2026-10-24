@@ -7,6 +7,7 @@ import { projects, profile } from "../data/projects";
 const links = [
   { label: "Home", href: "#top" },
   { label: "Projects", href: "#work" },
+  { label: "Edu & Exp", full: "Education & Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -63,11 +64,13 @@ export default function Nav({ dark, onToggle }) {
         </a>
 
         <div className="flex items-center gap-8 md:gap-10">
-          <nav className="hidden md:flex items-center gap-9 font-warm-display text-[15px] text-warm-ink dark:text-cream">
+          <nav className="hidden md:flex items-center gap-7 font-warm-display text-[15px] text-warm-ink dark:text-cream">
             {links.map((l) => (
               <a
                 key={l.label}
                 href={l.href}
+                title={l.full}
+                aria-label={l.full}
                 className={`relative pb-1 transition-colors hover:text-navy dark:hover:text-gold ${
                   active === l.label ? "text-navy dark:text-gold" : "text-warm-ink-soft dark:text-cream/70"
                 }`}

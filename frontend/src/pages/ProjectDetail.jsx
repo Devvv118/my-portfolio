@@ -29,15 +29,34 @@ function Section({ label, title, children }) {
 // Architecture diagrams live in /public/architecture as <slug>-light.png and <slug>-dark.png.
 // Only the slugs listed here have one; the dark variant is optional (the light one is reused).
 const diagrams = {
-  "io-workload-classifier": { alt: "Telemetry-driven intelligence and control architecture", darkVariant: false },
+  "portfolio-intelligence-platform": { alt: "Serverless pipeline: scheduled Lambdas, Gmail and Gemini, DynamoDB, API Gateway and the dashboard", darkVariant: true },
+  "io-workload-classifier": { alt: "Architecture of the autonomous storage control plane: telemetry, streaming backbone, ML inference, control plane, actuation and serving", darkVariant: true, zoom: true },
   "data-analyst-agent": { alt: "File-aware analysis and code execution flow", darkVariant: true },
   "virtual-teaching-assistant": { alt: "Course question answering flow", darkVariant: true },
-  "stock-macro-view": { alt: "Data ingestion and storage architecture", darkVariant: true },
 };
 
 function Architecture({ slug }) {
   const d = diagrams[slug];
   const base = `/architecture/${slug}`;
+
+  // Large diagrams opt in with `zoom: true`: click to open the full-size image in a new tab.
+  if (d.zoom) {
+    const frame = (src, cls) => (
+      <a href={src} target="_blank" rel="noreferrer" title="Open full size" className={`cursor-zoom-in ${cls}`}>
+        <img src={src} alt={d.alt} className="mx-auto block max-h-[720px] w-auto max-w-full" />
+      </a>
+    );
+    return (
+      <>
+        <div className={`mt-4 overflow-hidden rounded-xl border border-cream-line bg-white dark:border-white/10 ${d.darkVariant ? "dark:bg-[#171717]" : ""}`}>
+          {frame(`${base}-light.png`, d.darkVariant ? "block dark:hidden" : "block")}
+          {d.darkVariant && frame(`${base}-dark.png`, "hidden dark:block")}
+        </div>
+        <p className="mt-2 font-mono text-[11px] tracking-[0.15em] text-warm-ink-soft dark:text-cream/60">CLICK THE DIAGRAM TO OPEN IT FULL SIZE</p>
+      </>
+    );
+  }
+
   return (
     <div className={`mt-4 overflow-hidden rounded-xl border border-cream-line bg-white dark:border-white/10 ${d.darkVariant ? "dark:bg-[#171717]" : ""}`}>
       <img
@@ -86,11 +105,19 @@ export default function ProjectDetail() {
       ),
     },
     {
-      key: "responsibilities", label: "RESPONSIBILITIES", title: "Responsibilities", show: !!w.responsibilities,
+      key: "how", label: "HOW IT WORKS", title: "The closed loop", show: !!w.how,
+      body: <div className={flush}><Readme source={w.how} /></div>,
+    },
+    {
+      key: "responsibilities", label: "WHAT I DID", title: "What I did", show: !!w.responsibilities,
       body: <div className={flush}><Readme source={w.responsibilities} /></div>,
     },
     {
-      key: "learning", label: "LEARNING", title: "Learning", show: !!w.learning,
+      key: "decisions", label: "DESIGN DECISIONS", title: "Why it is built this way", show: !!w.decisions,
+      body: <div className={flush}><Readme source={w.decisions} /></div>,
+    },
+    {
+      key: "learning", label: "WHAT I LEARNT", title: "What I learnt", show: !!w.learning,
       body: <div className={flush}><Readme source={w.learning} /></div>,
     },
     {
