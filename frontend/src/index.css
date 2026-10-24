@@ -9,16 +9,20 @@
   --font-warm-serif: "Newsreader", Georgia, serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --color-cream: #faf5ec;
-  --color-cream-deep: #f1e9da;
-  --color-cream-line: #e6dcc8;
+  /* Light palette: clean paper, graphite ink, brass gold. Neutral darks (no brown, no
+     blue) so gold is the only colour in the room, the same recipe as dark mode. The
+     "navy" token names are kept so every component still works; the values are graphite
+     greys now. The .dark block below swaps them for slightly lighter charcoals. */
+  --color-cream: #fcfaf4;
+  --color-cream-deep: #f6f2e8;
+  --color-cream-line: #e8e2d2;
   --color-warm-ink: #16171b;
-  --color-warm-ink-soft: #3a3c42;
-  --color-navy: #2c4274;
-  --color-navy-deep: #1a2848;
-  --color-navy-metal: #3d5a92;
+  --color-warm-ink-soft: #4a4b52;
+  --color-navy: #1f2024;       /* graphite: Connect card, buttons, project tiles, contact band */
+  --color-navy-deep: #141518;  /* deepest graphite: code blocks, mobile menu */
+  --color-navy-metal: #34363c; /* lifted graphite: hover states */
   --color-gold: #c19a5b;
-  --color-gold-deep: #7a5a1e; /* darker so gold text is readable on the cream (light) background */
+  --color-gold-deep: #84590f; /* brass: readable gold text on the ivory (light) background */
   --color-gold-soft: #e6d6b8;
 }
 

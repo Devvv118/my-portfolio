@@ -83,9 +83,9 @@ export const projects = [
 
 export const profile = {
   name: "Dev Arun",
-  role: "",
-  tagline: "",
-  bio: "I'm an undergrad student, with a diploma in data science. My work spans AI agents, machine learning, backend infrastructure, and data-driven platforms. I'm drawn to problems that require more than just a working solution; systems that are scalable, adaptive, and thoughtfully engineered.",
+  role: "Full Stack Developer",
+  tagline: "AI/ML Engineer & Backend Developer",
+  bio: "Computer Science undergrad specializing in Full Stack Systems and AI/ML engineering, with hands-on experience building autonomous control planes, LLM-powered applications, and serverless cloud monitoring platforms. Experienced in Python, Kafka, Docker, and AWS, with a focus on developing reliable, scalable systems that combine intelligent decision-making with practical infrastructure.",
   location: "Bengaluru, IN",
   email: "dev.socials181@gmail.com",
   phone: "8971293837",

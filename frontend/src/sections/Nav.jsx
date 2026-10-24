@@ -55,7 +55,7 @@ export default function Nav({ dark, onToggle }) {
           hidden ? "-translate-y-full" : "translate-y-0"
         } ${
           scrolled
-            ? "py-2.5 bg-cream/90 dark:bg-navy-deep/90 backdrop-blur-md shadow-[0_12px_30px_-18px_rgba(26,40,72,0.45)]"
+            ? "py-2.5 bg-cream/90 dark:bg-navy-deep/90 backdrop-blur-md shadow-[0_12px_30px_-18px_rgba(20,20,24,0.45)]"
             : "py-3 bg-cream/0"
         }`}
       >
@@ -71,8 +71,8 @@ export default function Nav({ dark, onToggle }) {
                 href={l.href}
                 title={l.full}
                 aria-label={l.full}
-                className={`relative pb-1 transition-colors hover:text-navy dark:hover:text-gold ${
-                  active === l.label ? "text-navy dark:text-gold" : "text-warm-ink-soft dark:text-cream/70"
+                className={`relative pb-1 transition-colors hover:text-gold-deep dark:hover:text-gold ${
+                  active === l.label ? "text-gold-deep dark:text-gold" : "text-warm-ink-soft dark:text-cream/70"
                 }`}
               >
                 {l.label}

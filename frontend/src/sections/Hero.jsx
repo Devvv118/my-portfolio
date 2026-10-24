@@ -4,14 +4,21 @@ import { SocialIcon } from "../components/heroShared";
 // Idea 05 — Blueprint
 // Fits the data / systems theme: a faint engineering grid replaces the beige
 // wash, the old curve survives as a single thin contour, and the three colours
-// each get a clear job — navy = the Connect card + button (weight), gold =
-// the registration marks (spark), cream/ink = the reading
-// surface. Dark mode uses a gold grid on near-black cards.
+// each get a clear job — espresso = the Connect card + button (weight), gold =
+// the registration marks and glow (spark), ivory/ink = the reading surface.
+// Light mode sits on one even warm-white wash; dark mode uses a gold grid on
+// near-black cards.
 const CURVE = "M 1200 -40 C 1010 90, 990 240, 1120 350 C 1250 460, 1170 610, 970 630 C 800 648, 758 495, 600 515 C 470 532, 445 680, 280 705";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-cream px-8 pt-8 pb-10 [--grid:rgba(44,66,116,0.10)] dark:bg-navy-deep dark:[--grid:rgba(193,154,91,0.10)] md:pl-40 md:pr-16 md:pt-10 md:pb-12 lg:pl-52">
+    <section id="top" className="relative overflow-hidden bg-cream px-8 pt-8 pb-10 [--grid:rgba(31,32,36,0.07)] dark:bg-navy-deep dark:[--grid:rgba(193,154,91,0.10)] md:pl-40 md:pr-16 md:pt-10 md:pb-12 lg:pl-52">
+      {/* light mode: one even warm-white wash over the whole hero, easing into the page cream at the bottom so there is no seam */}
+      <div
+        className="pointer-events-none absolute inset-0 dark:hidden"
+        aria-hidden="true"
+        style={{ background: "linear-gradient(to bottom, #ffffff 0%, #fefcf8 55%, #fcfaf4 100%)" }}
+      />
       <div
         className="pointer-events-none absolute inset-0"
         aria-hidden="true"
@@ -23,7 +30,7 @@ export default function Hero() {
         }}
       />
       <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d={CURVE} fill="none" className="stroke-navy/30 dark:stroke-gold/40" strokeWidth="1.4" />
+        <path d={CURVE} fill="none" className="stroke-gold-deep/35 dark:stroke-gold/40" strokeWidth="1.4" />
         <path d={CURVE} fill="none" className="stroke-gold" strokeWidth="1" strokeDasharray="2 8" transform="translate(18 14)" opacity="0.8" />
       </svg>
       {/* registration marks */}
@@ -36,19 +43,19 @@ export default function Hero() {
             <h1 className="font-warm-display text-4xl tracking-tight text-navy dark:text-cream md:text-6xl">
               {profile.name}
             </h1>
-            <p className="mt-4 max-w-lg border-t border-cream-line pt-4 text-base font-medium leading-relaxed text-warm-ink dark:border-white/10 dark:text-cream/90 md:mt-5 md:pt-5 md:text-lg">
+            <p className="mt-4 max-w-lg border-t border-cream-line pt-4 text-base font-normal leading-relaxed text-warm-ink dark:border-white/10 dark:font-medium dark:text-cream/90 md:mt-5 md:pt-5 md:text-lg">
               {profile.bio}
             </p>
             <a
               href="#contact"
-              className="group mt-6 inline-flex items-center gap-3 rounded-full bg-navy py-2.5 pl-6 pr-2.5 text-[15px] font-medium text-cream transition-transform duration-300 hover:-translate-y-0.5 dark:bg-gold dark:text-navy-deep"
+              className="group mt-6 inline-flex items-center gap-3 rounded-full bg-navy py-2.5 pl-6 pr-2.5 text-[15px] font-medium text-cream shadow-[0_10px_24px_-12px_rgba(20,20,24,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-10px_rgba(193,154,91,0.6)] dark:bg-gold dark:text-navy-deep dark:shadow-none dark:hover:shadow-none"
             >
               Get in touch
               <span className="grid h-8 w-8 place-items-center rounded-full bg-gold text-navy-deep transition-transform duration-300 group-hover:translate-x-0.5 dark:bg-navy-deep/15">→</span>
             </a>
           </div>
 
-          <div className="w-full shrink-0 rounded-2xl border border-transparent bg-navy p-4 text-cream shadow-[0_28px_50px_-24px_rgba(26,40,72,0.6)] dark:border-gold/40 dark:bg-warm-ink md:mt-10 md:w-auto md:p-5">
+          <div className="w-full shrink-0 rounded-2xl border border-transparent bg-navy p-4 text-cream shadow-[0_26px_50px_-26px_rgba(20,20,24,0.5)] ring-1 ring-gold/60 dark:shadow-[0_28px_50px_-24px_rgba(0,0,0,0.6)] dark:ring-0 dark:border-gold/40 dark:bg-warm-ink md:mt-10 md:w-auto md:p-5">
             <span className="font-mono text-[10px] tracking-[0.2em] text-gold">CONNECT</span>
             <div className="mt-3 flex flex-row flex-wrap gap-2 md:flex-col md:flex-nowrap">
               {profile.socials.map((s) => (

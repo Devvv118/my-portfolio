@@ -19,7 +19,7 @@ export function LinkButton({ href, onClick, onTrack, icon, primary = false, chil
   }
   const tone = primary
     ? "border-navy bg-navy text-cream hover:border-navy-metal hover:bg-navy-metal dark:border-gold dark:bg-gold dark:text-warm-ink dark:hover:border-gold-soft dark:hover:bg-gold-soft"
-    : "border-warm-ink-soft/40 text-warm-ink hover:border-navy hover:text-navy dark:border-white/20 dark:text-cream/80 dark:hover:border-gold dark:hover:text-gold";
+    : "border-warm-ink-soft/40 text-warm-ink hover:border-gold-deep hover:text-gold-deep dark:border-white/20 dark:text-cream/80 dark:hover:border-gold dark:hover:text-gold";
   if (onClick) {
     return <button type="button" onClick={() => { onTrack?.(); onClick(); }} className={`${base} ${tone}`}>{icon}{children}</button>;
   }
@@ -46,7 +46,7 @@ export function Tags({ items, className = "" }) {
 export function TopBar({ dark, onToggle }) {
   return (
     <div className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-4 md:px-12">
-      <a href="/#work" className="font-mono text-[11px] tracking-[0.15em] text-warm-ink-soft transition-colors hover:text-navy dark:text-cream/70 dark:hover:text-gold">← ALL PROJECTS</a>
+      <a href="/#work" className="font-mono text-[11px] tracking-[0.15em] text-warm-ink-soft transition-colors hover:text-gold-deep dark:text-cream/70 dark:hover:text-gold">← ALL PROJECTS</a>
       <div className="flex items-center gap-4">
         <ThemeToggle dark={dark} onToggle={onToggle} />
         <a href="/" className="text-warm-ink dark:text-cream"><Logo className="h-6 w-8" /></a>

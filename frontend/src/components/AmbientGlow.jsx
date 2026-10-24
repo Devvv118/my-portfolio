@@ -1,5 +1,5 @@
 // Signature ambient element for the warm theme: soft, hand-placed
-// metallic-gold and navy blooms, heavily blurred, sitting low in
+// metallic-gold and espresso blooms, heavily blurred, sitting low in
 // opacity behind content. Reads as warmth and depth rather than a
 // flat CSS gradient — used sparingly (hero + footer only).
 export default function AmbientGlow({ variant = "hero", className = "" }) {
@@ -13,6 +13,11 @@ export default function AmbientGlow({ variant = "hero", className = "" }) {
         <div
           className="absolute -bottom-32 right-1/5 h-[380px] w-[380px] rounded-full opacity-30 blur-[100px]"
           style={{ background: "radial-gradient(circle, var(--color-navy-metal), transparent 70%)" }}
+        />
+        {/* light mode only: a warmer, brighter amber bloom so the band glows instead of sitting flat */}
+        <div
+          className="absolute -bottom-40 left-1/3 h-[420px] w-[520px] rounded-full opacity-35 blur-[110px] dark:hidden"
+          style={{ background: "radial-gradient(circle, #e2a83f, transparent 70%)" }}
         />
       </div>
     );

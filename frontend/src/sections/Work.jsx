@@ -43,7 +43,7 @@ export default function Work() {
             <Link to={`/projects/${p.slug}`} onClick={() => trackProject(p.slug, "open")} className="block md:col-span-2" aria-label={`Open ${p.title}`}>
               <WarmVisual
                 project={p}
-                className="aspect-[4/3] w-full max-w-[120px] rounded-lg dark:ring-1 dark:ring-white/10 shadow-[0_14px_28px_-16px_rgba(26,40,72,0.5)]"
+                className="aspect-[4/3] w-full max-w-[120px] rounded-lg dark:ring-1 dark:ring-white/10 shadow-[0_14px_28px_-16px_rgba(20,20,24,0.5)]"
               />
             </Link>
 
@@ -51,7 +51,7 @@ export default function Work() {
               <div className="font-mono text-[10px] tracking-[0.2em] text-warm-ink-soft dark:text-cream/60 mb-1.5">
                 {p.id} — {p.category.toUpperCase()}
               </div>
-              <h3 className="font-warm-display text-xl md:text-2xl font-medium text-warm-ink dark:text-cream transition-colors group-hover:text-navy dark:group-hover:text-gold">
+              <h3 className="font-warm-display text-xl md:text-2xl font-medium text-warm-ink dark:text-cream transition-colors group-hover:text-gold-deep dark:group-hover:text-gold">
                 <Link to={`/projects/${p.slug}`} onClick={() => trackProject(p.slug, "open")}>{p.title}</Link>
               </h3>
               {(p.org || p.kind) && (
@@ -83,7 +83,7 @@ export default function Work() {
                 onClick={() => trackProject(p.slug, "github")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-warm-ink-soft dark:border-white/30 text-warm-ink dark:text-cream transition-colors hover:border-navy hover:text-navy dark:hover:border-gold dark:hover:text-gold"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-warm-ink-soft dark:border-white/30 text-warm-ink dark:text-cream transition-colors hover:border-gold-deep hover:text-gold-deep dark:hover:border-gold dark:hover:text-gold"
                 aria-label={`View ${p.title} on GitHub`}
               >
                 <GithubIcon />

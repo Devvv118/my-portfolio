@@ -5,7 +5,7 @@ import { profile } from "../data/projects";
 export default function Skills() {
   return (
     <section id="skills" className="relative bg-cream px-6 pb-6 pt-6 dark:bg-navy-deep md:px-20 md:pb-8 md:pt-8 lg:px-32">
-      <div className="mb-3 font-mono text-[11px] font-semibold tracking-[0.2em] text-gold-deep dark:text-gold">SKILLS</div>
+      <div className="mb-3 font-mono text-[11px] font-normal! tracking-[0.2em] text-gold-deep dark:font-semibold! dark:text-gold">SKILLS</div>
 
       <div className="flex flex-col divide-y divide-cream-line border-b border-t border-cream-line dark:divide-white/10 dark:border-white/10">
         {profile.skills.map((g, i) => (
@@ -17,12 +17,12 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: i * 0.05, ease: [0.19, 1, 0.22, 1] }}
             className="grid grid-cols-1 gap-1.5 py-2.5 md:grid-cols-12 md:items-center md:gap-6"
           >
-            <div className="font-mono text-[11px] font-bold tracking-[0.16em] text-warm-ink dark:text-cream md:col-span-3">
+            <div className="font-mono text-[11px] font-normal tracking-[0.16em] text-warm-ink dark:font-bold dark:text-cream md:col-span-3">
               {String(i + 1).padStart(2, "0")} — {g.group.toUpperCase()}
             </div>
             <div className="flex flex-wrap gap-1.5 md:col-span-9">
               {g.items.map((item) => (
-                <span key={item} className="rounded-full border border-warm-ink/30 px-2.5 py-0.5 font-mono text-xs font-semibold text-warm-ink dark:border-white/35 dark:text-cream">
+                <span key={item} className="rounded-full border border-warm-ink/30 px-2.5 py-0.5 font-mono text-xs font-normal text-warm-ink dark:border-white/35 dark:font-semibold dark:text-cream">
                   {item}
                 </span>
               ))}

@@ -22,7 +22,7 @@ export default function Categories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.19, 1, 0.22, 1] }}
-              className="group relative block overflow-hidden rounded-2xl dark:ring-1 dark:ring-white/10 shadow-[0_25px_50px_-20px_rgba(26,40,72,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-15px_rgba(26,40,72,0.45)]"
+              className="group relative block overflow-hidden rounded-2xl dark:ring-1 dark:ring-white/10 shadow-[0_25px_50px_-20px_rgba(20,20,24,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-15px_rgba(20,20,24,0.45)]"
             >
               <WarmVisual
                 project={p}
